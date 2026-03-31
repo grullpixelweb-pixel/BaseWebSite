@@ -7,17 +7,19 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function Cart() {
   const { cart, removeFromCart, total } = useCart();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
+
+  const formatPrice = (price: number) => price.toLocaleString(lang === 'en' ? 'en-US' : 'es-ES');
 
   const handleCheckout = () => {
     const phoneNumber = "5511981718899";
     const header = t.cart.whatsappHeader;
     
     const items = cart
-      .map((item) => `- *${item.title}* ($${item.price})`)
+      .map((item) => `- *${item.title}* ($${formatPrice(item.price)})`)
       .join("%0A");
 
-    const footer = t.cart.whatsappTotal.replace("%s", total.toString());
+    const footer = t.cart.whatsappTotal.replace("%s", formatPrice(total));
 
     const message = header + items + footer;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -53,7 +55,7 @@ export default function Cart() {
             <div key={item.id} className="bg-white/5 border border-white/10 rounded-lg p-4 flex justify-between items-start">
               <div className="flex-1 pr-4">
                 <h4 className="text-sm font-semibold text-gray-200">{item.title}</h4>
-                <p className="text-lg font-bold text-blue-400 mt-1">${item.price}</p>
+                <p className="text-lg font-bold text-blue-400 mt-1">${formatPrice(item.price)}</p>
               </div>
               <button 
                 onClick={() => removeFromCart(item.id)}
@@ -71,7 +73,7 @@ export default function Cart() {
         <div className="flex justify-between items-center mb-6">
           <span className="text-gray-400 text-lg">{t.cart.totalBg}</span>
           <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">
-            ${total}
+            ${formatPrice(total)}
           </span>
         </div>
         

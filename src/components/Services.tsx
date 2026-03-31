@@ -7,7 +7,7 @@ import { useLanguage } from "../context/LanguageContext";
 
 export default function Services() {
   const { cart, addToCart } = useCart();
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const services = t.servicesConfig.items;
 
   return (
@@ -40,7 +40,7 @@ export default function Services() {
                 <div className="flex-1">
                   <h3 className="text-xl font-semibold text-white">{service.title}</h3>
                   <p className="mt-4 flex items-baseline text-white">
-                    <span className="text-4xl font-extrabold tracking-tight">${service.price}</span>
+                    <span className="text-4xl font-extrabold tracking-tight">${service.price.toLocaleString(lang === 'en' ? 'en-US' : 'es-ES')}</span>
                     {service.id >= 5 && <span className="ml-1 text-xl font-medium text-gray-400">{t.servicesConfig.perSession}</span>}
                   </p>
                   <p className="mt-6 text-gray-300 text-sm">{service.description}</p>

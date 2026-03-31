@@ -76,12 +76,12 @@ export const translations = {
       selected: "Seleccionado",
       perSession: "/sesión",
       items: [
-        { id: 1, title: "Landing pages", price: 350, description: "Páginas promocionales para marcas, lanzamientos. 100% Adaptativo.", features: ["Diseño One-Page", "Adaptable a móviles", "WhatsApp Business", "Alta conversión"] },
-        { id: 2, title: "Site web + Branding Visual", price: 500, description: "Web completa con tienda básica y formularios.", features: ["Hasta 3 páginas", "Branding visual", "Tienda básica", "Formularios de contacto", "Galería"] },
-        { id: 3, title: "Portafolio Digital V-Pro", price: 1000, description: "Galerías detalladas, biografía, redes sociales y blogs.", features: ["Galerías", "Reservas", "Blog integrado", "Logins", "Redes sociales"] },
-        { id: 4, title: "Pack full: 3 actualizaciones", price: 3000, description: "El paquete maestro. Hospedaje en Firebase 6 meses incluido.", features: ["Todo incluido", "3 actualizaciones completas", "Firebase 6 meses", "Ultra Premium"] },
-        { id: 5, title: "Mantenimiento Mensual", price: 350, description: "Parches de seguridad y edición de contenido.", features: ["Actualizaciones de plataforma", "Seguridad", "Soporte", "Horas de edición"] },
-        { id: 6, title: "Consultoría Personalizada", price: 100, description: "Asesoría estratégica dedicada. Pago por sesión.", features: ["Auditoría actual", "Estrategia de marca", "Recomendaciones", "Sesión 1 a 1"] }
+        { id: 1, title: "Landing pages", price: 250000, description: "Páginas promocionales para marcas, lanzamientos. 100% Adaptativo.", features: ["Diseño One-Page", "Adaptable a móviles", "WhatsApp Business", "Alta conversión"] },
+        { id: 2, title: "Site web + Branding Visual", price: 600000, description: "Web completa con tienda básica y formularios.", features: ["Hasta 3 páginas", "Branding visual", "Tienda básica", "Formularios de contacto", "Galería"] },
+        { id: 3, title: "Portafolio Digital V-Pro", price: 900000, description: "Galerías detalladas, biografía, redes sociales y blogs.", features: ["Galerías", "Reservas", "Blog integrado", "Logins", "Redes sociales"] },
+        { id: 4, title: "Pack full: 3 actualizaciones", price: 2400000, description: "El paquete maestro. Hospedaje en Firebase 6 meses incluido.", features: ["Todo incluido", "3 actualizaciones completas", "Firebase 6 meses", "Ultra Premium"] },
+        { id: 5, title: "Mantenimiento Mensual", price: 250000, description: "Parches de seguridad y edición de contenido.", features: ["Actualizaciones de plataforma", "Seguridad", "Soporte", "Horas de edición"] },
+        { id: 6, title: "Consultoría Personalizada", price: 100000, description: "Asesoría estratégica dedicada. Pago por sesión.", features: ["Auditoría actual", "Estrategia de marca", "Recomendaciones", "Sesión 1 a 1"] }
       ]
     },
     cart: {
@@ -121,10 +121,10 @@ export const translations = {
       selected: "Added",
       perSession: "/session",
       items: [
-        { id: 1, title: "Promotional Landing", price: 350, description: "Event and ticket landing pages.", features: ["Single Page layout", "Mobile Ready", "WhatsApp Sync", "High Conversion"] },
-        { id: 2, title: "Website + Branding", price: 500, description: "Solid digital presence starter kit.", features: ["3 pages", "Branding design", "Basic store", "Forms", "Galleries"] },
-        { id: 3, title: "V-Pro Portfolio", price: 1000, description: "Detailed showcases & interactions.", features: ["Galleries", "Booking system", "Blog module", "Auth portals", "Social links"] },
-        { id: 4, title: "Master Pack", price: 3000, description: "6 free months Firebase included.", features: ["All previous", "3 free updates", "Firebase hosting", "Priority Support"] },
+        { id: 1, title: "Promotional Landing", price: 200, description: "Event and ticket landing pages.", features: ["Single Page layout", "Mobile Ready", "WhatsApp Sync", "High Conversion"] },
+        { id: 2, title: "Website + Branding", price: 300, description: "Solid digital presence starter kit.", features: ["3 pages", "Branding design", "Basic store", "Forms", "Galleries"] },
+        { id: 3, title: "V-Pro Portfolio", price: 600, description: "Detailed showcases & interactions.", features: ["Galleries", "Booking system", "Blog module", "Auth portals", "Social links"] },
+        { id: 4, title: "Master Pack", price: 1400, description: "6 free months Firebase included.", features: ["All previous", "3 free updates", "Firebase hosting", "Priority Support"] },
         { id: 5, title: "Monthly Maintenance", price: 350, description: "Security patches and content tweaks.", features: ["Platform updates", "Security audits", "Tech support", "Edits logic"] },
         { id: 6, title: "Consulting", price: 100, description: "Bespoke digital strategy audts.", features: ["Deep audit", "Brand strategy", "Web standards", "1 on 1 review"] }
       ]
