@@ -40,7 +40,7 @@ export const translations = {
       ]
     },
     cart: {
-      title: "Seu Projeto Web", empty: "Por favor, selecione módulos.", totalBg: "Total", checkout: "Completar no WhatsApp", whatsappHeader: "Bem-vindo a Pixel FW, vemos que tem interesse em:%0A%0A", whatsappTotal: "%0A%0AEstamos processando sua compra, em breve entraremos em contato."
+      title: "Seu Projeto Web", empty: "Por favor, selecione módulos.", totalBg: "Total", checkout: "Completar no WhatsApp", whatsappHeader: "Bem-vindo a Grull Picture Web!%0A%0ASabemos que tem interesse em:%0A%0A", whatsappTotal: "%0A%0AEm breve responderemos assim que processarmos o pedido.%0ATotal: %s"
     },
     footer: { text: "Forjando seu território.", links: "Links", connect: "Conecte-se", rights: "Direitos reservados.", terms: "Termos", privacy: "Privacidade" }
   },
@@ -85,7 +85,7 @@ export const translations = {
       ]
     },
     cart: {
-      title: "Tu Proyecto", empty: "Pila vacía.", totalBg: "Total", checkout: "Comprar por WA", whatsappHeader: "Bienvenido a Pixel FW, vemos que tienes interes en:%0A%0A", whatsappTotal: "%0A%0AEstamos procesando tu compra, en breve te contactaremos."
+      title: "Tu Proyecto", empty: "Pila vacía.", totalBg: "Total", checkout: "Comprar por WA", whatsappHeader: "Bienvenido a Grull Picture Web!%0A%0ASabemos que estas interesado en:%0A%0A", whatsappTotal: "%0A%0AEn breve te respondemos en cuanto procesamos el pedido.%0ATotal: %s"
     },
     footer: { text: "Forjando código.", links: "Enlaces", connect: "Conecta", rights: "Derechos reservados.", terms: "Términos", privacy: "Privacidad" }
   },
@@ -130,7 +130,7 @@ export const translations = {
       ]
     },
     cart: {
-      title: "Your Cart", empty: "Select some modules.", totalBg: "Total", checkout: "Submit to WhatsApp", whatsappHeader: "Welcome to Pixel FW, we see you're interested in:%0A%0A", whatsappTotal: "%0A%0AWe are processing your order, we'll contact you shortly."
+      title: "Your Cart", empty: "Select some modules.", totalBg: "Total", checkout: "Submit to WhatsApp", whatsappHeader: "Welcome to Grull Picture Web!%0A%0AWe know you are interested in:%0A%0A", whatsappTotal: "%0A%0AWe will reply shortly as soon as we process your order.%0ATotal: %s"
     },
     footer: { text: "We craft futures.", links: "Quick links", connect: "Connect", rights: "All rights reserved.", terms: "Terms", privacy: "Privacy" }
   }

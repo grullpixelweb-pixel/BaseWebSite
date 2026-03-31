@@ -23,7 +23,7 @@ export default function Navbar() {
             <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-500 to-violet-500 rounded-lg flex items-center justify-center font-bold text-sm lg:text-xl shadow-lg shadow-blue-500/20">
               GP
             </div>
-            <span className="font-bold text-base lg:text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400">
+            <span className="font-bold text-sm sm:text-base lg:text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400 whitespace-nowrap">
               Grull Picture Web
             </span>
           </div>
@@ -54,12 +54,7 @@ export default function Navbar() {
               </button>
             </div>
           </div>
-          <div className="-mr-2 flex items-center md:hidden gap-4">
-            <div className="flex items-center gap-1 mr-2">
-              <button onClick={() => handleLangChange("pt")} className={`text-xs font-bold px-1.5 py-1 rounded ${lang === 'pt' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>PT</button>
-              <button onClick={() => handleLangChange("es")} className={`text-xs font-bold px-1.5 py-1 rounded ${lang === 'es' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>ES</button>
-              <button onClick={() => handleLangChange("en")} className={`text-xs font-bold px-1.5 py-1 rounded ${lang === 'en' ? 'bg-white/10 text-white' : 'text-gray-500'}`}>EN</button>
-            </div>
+          <div className="-mr-2 flex items-center md:hidden gap-2">
             <button
               className="relative p-2 text-gray-300 hover:text-white transition-colors"
               onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
@@ -88,6 +83,17 @@ export default function Navbar() {
             <a href="#beneficios" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">{t.navbar.benefits}</a>
             <a href="#servicios" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">{t.navbar.services}</a>
             <a href="#contacto" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">{t.navbar.contact}</a>
+            
+            <div className="px-3 py-4 mt-2 border-t border-white/10">
+              <p className="text-sm text-gray-400 mb-3 flex items-center gap-2">
+                <Globe className="w-4 h-4" /> Idioma / Language
+              </p>
+              <div className="flex items-center gap-2">
+                <button onClick={() => handleLangChange("pt")} className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 ${lang === 'pt' ? 'bg-blue-600/30 text-blue-400 border border-blue-500/30' : 'bg-white/5 text-gray-400 border border-white/10'}`}>PT</button>
+                <button onClick={() => handleLangChange("es")} className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 ${lang === 'es' ? 'bg-blue-600/30 text-blue-400 border border-blue-500/30' : 'bg-white/5 text-gray-400 border border-white/10'}`}>ES</button>
+                <button onClick={() => handleLangChange("en")} className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 ${lang === 'en' ? 'bg-blue-600/30 text-blue-400 border border-blue-500/30' : 'bg-white/5 text-gray-400 border border-white/10'}`}>EN</button>
+              </div>
+            </div>
           </div>
         </div>
       )}
