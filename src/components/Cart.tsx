@@ -9,17 +9,20 @@ export default function Cart() {
   const { cart, removeFromCart, total } = useCart();
   const { t, lang } = useLanguage();
 
-  const formatPrice = (price: number) => price.toLocaleString(lang === 'en' ? 'en-US' : 'es-ES');
+  const formatPrice = (price: number) => price.toLocaleString("pt-BR");
 
   const handleCheckout = () => {
     const phoneNumber = "5511981718899";
     const header = t.cart.whatsappHeader;
-    
+
     const items = cart
-      .map((item) => `- *${item.title}* ($${formatPrice(item.price)})`)
+      .map((item) => `- *${item.title}* (R$ ${formatPrice(item.price)})`)
       .join("%0A");
 
-    const footer = t.cart.whatsappTotal.replace("%s", formatPrice(total));
+    const footer = t.cart.whatsappTotal.replace(
+      "%s",
+      "R$ " + formatPrice(total),
+    );
 
     const message = header + items + footer;
     const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -28,16 +31,20 @@ export default function Cart() {
   };
 
   return (
-    <div 
-      id="cart-sidebar" 
+    <div
+      id="cart-sidebar"
       className="fixed inset-y-0 right-0 z-[60] w-full md:w-[400px] h-full transform translate-x-full transition-transform duration-300 ease-in-out bg-gray-950 border-l border-white/10 shadow-2xl flex flex-col"
     >
       <div className="flex items-center justify-between p-6 border-b border-white/10 glass">
         <h2 className="text-xl font-bold text-white flex items-center gap-2">
           {t.cart.title}
         </h2>
-        <button 
-          onClick={() => document.getElementById("cart-sidebar")?.classList.add("translate-x-full")}
+        <button
+          onClick={() =>
+            document
+              .getElementById("cart-sidebar")
+              ?.classList.add("translate-x-full")
+          }
           className="text-gray-400 hover:text-white transition-colors"
         >
           <X className="w-6 h-6" />
@@ -52,12 +59,19 @@ export default function Cart() {
           </div>
         ) : (
           cart.map((item) => (
-            <div key={item.id} className="bg-white/5 border border-white/10 rounded-lg p-4 flex justify-between items-start">
+            <div
+              key={item.id}
+              className="bg-white/5 border border-white/10 rounded-lg p-4 flex justify-between items-start"
+            >
               <div className="flex-1 pr-4">
-                <h4 className="text-sm font-semibold text-gray-200">{item.title}</h4>
-                <p className="text-lg font-bold text-blue-400 mt-1">${formatPrice(item.price)}</p>
+                <h4 className="text-sm font-semibold text-gray-200">
+                  {item.title}
+                </h4>
+                <p className="text-lg font-bold text-blue-400 mt-1">
+                  R$ {formatPrice(item.price)}
+                </p>
               </div>
-              <button 
+              <button
                 onClick={() => removeFromCart(item.id)}
                 className="text-gray-500 hover:text-red-500 transition-colors p-1"
                 aria-label="Remove item"
@@ -73,17 +87,19 @@ export default function Cart() {
         <div className="flex justify-between items-center mb-6">
           <span className="text-gray-400 text-lg">{t.cart.totalBg}</span>
           <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">
-            ${formatPrice(total)}
+            R$ {formatPrice(total)}
           </span>
         </div>
-        
+
         <button
           onClick={handleCheckout}
           disabled={cart.length === 0}
           className={`w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold text-lg transition-all shadow-lg
-            ${cart.length === 0 
-              ? 'bg-gray-800 text-gray-500 cursor-not-allowed' 
-              : 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-400 hover:to-emerald-500 hover:shadow-green-500/30'}
+            ${
+              cart.length === 0
+                ? "bg-gray-800 text-gray-500 cursor-not-allowed"
+                : "bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-400 hover:to-emerald-500 hover:shadow-green-500/30"
+            }
           `}
         >
           <Send className="w-6 h-6" />

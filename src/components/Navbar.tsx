@@ -8,11 +8,14 @@ import { Language } from "../locales/translations";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
   const { t, lang, setLang } = useLanguage();
 
   const handleLangChange = (l: Language) => {
-    setLang(l);
+    if (l !== lang) {
+      setLang(l);
+      clearCart();
+    }
   };
 
   return (
