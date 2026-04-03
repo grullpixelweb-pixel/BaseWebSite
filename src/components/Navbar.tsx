@@ -5,11 +5,13 @@ import { Menu, X, ShoppingCart, Globe } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useLanguage } from "../context/LanguageContext";
 import { Language } from "../locales/translations";
+import { useTheme } from "../context/ThemeContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const { cart, clearCart } = useCart();
   const { t, lang, setLang } = useLanguage();
+  const { theme, toggleTheme } = useTheme();
 
   const handleLangChange = (l: Language) => {
     if (l !== lang) {
@@ -19,33 +21,59 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="fixed w-full z-50 glass border-b border-white/10">
+    <nav
+      className="fixed w-full z-50 glass border-b"
+      style={{ borderColor: "var(--border-soft)" }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
+          {/* Logo */}
           <div className="flex-shrink-0 flex items-center gap-2 lg:gap-3">
-            <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-500 to-violet-500 rounded-lg flex items-center justify-center font-bold text-sm lg:text-xl shadow-lg shadow-blue-500/20">
+            <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-500 to-violet-500 rounded-lg flex items-center justify-center font-bold text-sm lg:text-xl text-white shadow-lg shadow-blue-500/20">
               GP
             </div>
-            <span className="font-bold text-sm sm:text-base lg:text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-gray-100 to-gray-400 whitespace-nowrap">
+            <span
+              className="font-bold text-sm sm:text-base lg:text-xl tracking-tight whitespace-nowrap"
+              style={{ color: "var(--text-primary)" }}
+            >
               Grull Picture Web
             </span>
           </div>
+
+          {/* Desktop nav */}
           <div className="hidden md:block">
             <div className="md:ml-4 lg:ml-10 flex items-center md:space-x-3 lg:space-x-8">
-              <a href="#inicio" className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors">{t.navbar.home}</a>
-              <a href="#beneficios" className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors">{t.navbar.benefits}</a>
-              <a href="#servicios" className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors">{t.navbar.services}</a>
-              <a href="#contacto" className="text-sm lg:text-base text-gray-300 hover:text-white transition-colors">{t.navbar.contact}</a>
+              <a href="#inicio"     style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.home}</a>
+              <a href="#beneficios" style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.benefits}</a>
+              <a href="#servicios"  style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.services}</a>
+              <a href="#contacto"   style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.contact}</a>
 
-              <div className="flex items-center gap-1 lg:gap-2 border-l border-white/20 md:pl-3 lg:pl-6">
-                <Globe className="w-4 h-4 text-gray-400 hidden lg:block" />
-                <button onClick={() => handleLangChange("pt")} className={`text-xs font-bold px-1 py-0.5 rounded ${lang === 'pt' ? 'bg-blue-600/30 text-blue-400' : 'text-gray-500 hover:text-gray-300'}`}>PT</button>
-                <button onClick={() => handleLangChange("es")} className={`text-xs font-bold px-1 py-0.5 rounded ${lang === 'es' ? 'bg-blue-600/30 text-blue-400' : 'text-gray-500 hover:text-gray-300'}`}>ES</button>
-                <button onClick={() => handleLangChange("en")} className={`text-xs font-bold px-1 py-0.5 rounded ${lang === 'en' ? 'bg-blue-600/30 text-blue-400' : 'text-gray-500 hover:text-gray-300'}`}>EN</button>
+              {/* Language */}
+              <div className="flex items-center gap-1 lg:gap-2 border-l md:pl-3 lg:pl-6" style={{ borderColor: "var(--border-soft)" }}>
+                <Globe className="w-4 h-4 hidden lg:block" style={{ color: "var(--text-muted)" }} />
+                {(["pt","es","en"] as Language[]).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => handleLangChange(l)}
+                    className={`text-xs font-bold px-1 py-0.5 rounded transition-colors ${
+                      lang === l
+                        ? "bg-blue-500/20 text-blue-400"
+                        : "hover:opacity-80"
+                    }`}
+                    style={{ color: lang === l ? undefined : "var(--text-muted)" }}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                ))}
               </div>
 
+              {/* Theme toggle switch */}
+              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+
+              {/* Cart */}
               <button
-                className="relative p-2 text-gray-300 hover:text-white transition-colors md:ml-1 lg:ml-4"
+                className="relative p-2 transition-colors md:ml-1 lg:ml-2"
+                style={{ color: "var(--text-muted)" }}
                 onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
               >
                 <ShoppingCart className="w-6 h-6" />
@@ -57,9 +85,13 @@ export default function Navbar() {
               </button>
             </div>
           </div>
+
+          {/* Mobile: cart + theme + menu */}
           <div className="-mr-2 flex items-center md:hidden gap-2">
+            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
             <button
-              className="relative p-2 text-gray-300 hover:text-white transition-colors"
+              className="relative p-2 transition-colors"
+              style={{ color: "var(--text-muted)" }}
               onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
             >
               <ShoppingCart className="w-6 h-6" />
@@ -71,7 +103,8 @@ export default function Navbar() {
             </button>
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-800 focus:outline-none"
+              className="inline-flex items-center justify-center p-2 rounded-md transition-colors focus:outline-none"
+              style={{ color: "var(--text-muted)" }}
             >
               {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
             </button>
@@ -79,27 +112,92 @@ export default function Navbar() {
         </div>
       </div>
 
+      {/* Mobile menu */}
       {isOpen && (
-        <div className="md:hidden glass border-t border-white/5">
+        <div className="md:hidden glass border-t" style={{ borderColor: "var(--border-faint)" }}>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            <a href="#inicio" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">{t.navbar.home}</a>
-            <a href="#beneficios" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">{t.navbar.benefits}</a>
-            <a href="#servicios" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">{t.navbar.services}</a>
-            <a href="#contacto" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-800">{t.navbar.contact}</a>
-            
-            <div className="px-3 py-4 mt-2 border-t border-white/10">
-              <p className="text-sm text-gray-400 mb-3 flex items-center gap-2">
+            {[
+              { href: "#inicio",     label: t.navbar.home },
+              { href: "#beneficios", label: t.navbar.benefits },
+              { href: "#servicios",  label: t.navbar.services },
+              { href: "#contacto",   label: t.navbar.contact },
+            ].map(({ href, label }) => (
+              <a
+                key={href}
+                href={href}
+                className="block px-3 py-2 rounded-md text-base font-medium transition-colors"
+                style={{ color: "var(--text-muted)" }}
+                onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
+                onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}
+              >
+                {label}
+              </a>
+            ))}
+
+            <div className="px-3 py-4 mt-2 border-t" style={{ borderColor: "var(--border-soft)" }}>
+              <p className="text-sm mb-3 flex items-center gap-2" style={{ color: "var(--text-muted)" }}>
                 <Globe className="w-4 h-4" /> Idioma / Language
               </p>
               <div className="flex items-center gap-2">
-                <button onClick={() => handleLangChange("pt")} className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 ${lang === 'pt' ? 'bg-blue-600/30 text-blue-400 border border-blue-500/30' : 'bg-white/5 text-gray-400 border border-white/10'}`}>PT</button>
-                <button onClick={() => handleLangChange("es")} className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 ${lang === 'es' ? 'bg-blue-600/30 text-blue-400 border border-blue-500/30' : 'bg-white/5 text-gray-400 border border-white/10'}`}>ES</button>
-                <button onClick={() => handleLangChange("en")} className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 ${lang === 'en' ? 'bg-blue-600/30 text-blue-400 border border-blue-500/30' : 'bg-white/5 text-gray-400 border border-white/10'}`}>EN</button>
+                {(["pt","es","en"] as Language[]).map((l) => (
+                  <button
+                    key={l}
+                    onClick={() => handleLangChange(l)}
+                    className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 border transition-colors ${
+                      lang === l
+                        ? "bg-blue-500/20 text-blue-400 border-blue-500/30"
+                        : "border-opacity-20"
+                    }`}
+                    style={lang !== l ? { borderColor: "var(--border-soft)", color: "var(--text-muted)", background: "var(--bg-surface)" } : {}}
+                  >
+                    {l.toUpperCase()}
+                  </button>
+                ))}
               </div>
             </div>
           </div>
         </div>
       )}
     </nav>
+  );
+}
+
+/* ── Theme Toggle Switch ─────────────────────────────────────────── */
+function ThemeToggle({ theme, toggleTheme }: { theme: "dark" | "light"; toggleTheme: () => void }) {
+  const isDark = theme === "dark";
+  return (
+    <button
+      onClick={toggleTheme}
+      aria-label="Toggle theme"
+      title={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
+      className="relative inline-flex items-center w-14 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-1 flex-shrink-0"
+      style={{
+        background: isDark
+          ? "linear-gradient(135deg, #1e1b4b, #312e81)"
+          : "linear-gradient(135deg, #bfdbfe, #ddd6fe)",
+        boxShadow: isDark
+          ? "0 0 12px rgba(99,102,241,0.4)"
+          : "0 0 12px rgba(167,139,250,0.3)",
+      }}
+    >
+      {/* Track icons */}
+      <span className="absolute left-1.5 text-xs select-none" style={{ opacity: isDark ? 0.9 : 0.4 }}>
+        🌙
+      </span>
+      <span className="absolute right-1.5 text-xs select-none" style={{ opacity: isDark ? 0.4 : 0.9 }}>
+        ☀️
+      </span>
+      {/* Knob */}
+      <span
+        className="absolute w-5 h-5 rounded-full shadow-md transition-all duration-300 flex items-center justify-center text-[9px] font-black"
+        style={{
+          left: isDark ? "4px" : "calc(100% - 24px)",
+          background: isDark ? "#f9fafb" : "#7c3aed",
+          color: isDark ? "#1e1b4b" : "#fff",
+        }}
+      >
+        {isDark ? "I" : "O"}
+      </span>
+    </button>
   );
 }
