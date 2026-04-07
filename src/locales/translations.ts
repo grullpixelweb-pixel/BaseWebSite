@@ -68,10 +68,8 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Design Responsive + Cores (3 Sessões)",
-            "Carrinho de compras com WhatsApp",
-            "Formulário básico",
-            "Deploy + Link",
+            "Design Responsive + Deploy",
+            "Formulário",
             "Sem integrações externas",
           ],
         },
@@ -82,6 +80,7 @@ export const translations = {
           description: "Landing page x 3 com branding básico.",
           features: [
             "Design responsivo + Deploy",
+            "Page Store (whatsapp, telegram)",
             "Domínio (Cliente compra o domínio - registro.br)",
             "SEO técnico.",
           ],
@@ -189,10 +188,8 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Design Responsive + Colors (3 Sessions)",
-            "Carrito de compras con WhatsApp",
-            "Formulario básico",
-            "Deploy + Link",
+            "Diseño Responsive + Deploy",
+            "Formulario",
             "Sin integraciones externas",
           ],
         },
@@ -203,6 +200,7 @@ export const translations = {
           description: "Landing page x 3 con branding básico.",
           features: [
             "Diseño responsivo + Deploy",
+            "Page Store (whatsapp, telegram)",
             "Dominio (Cliente compra el dominio)",
             "SEO técnico.",
           ],
@@ -310,10 +308,8 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Responsive Design + Colors (3 Sessions)",
-            "WhatsApp Shopping Cart",
-            "Basic form",
-            "Deploy + Link",
+            "Responsive Design + Deploy",
+            "Form",
             "No external integrations",
           ],
         },
@@ -324,6 +320,7 @@ export const translations = {
           description: "Landing page x 3 with basic branding.",
           features: [
             "Responsive Design + Deploy",
+            "Page Store (WhatsApp, Telegram)",
             "Domain (Purchased by client)",
             "Technical SEO.",
           ],
