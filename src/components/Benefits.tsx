@@ -102,10 +102,10 @@ export default function Benefits() {
           </div>
 
           {/* Radial Hub (Right side on Desktop) */}
-          <div className="relative lg:w-2/3 h-[500px] sm:h-[600px] w-full flex items-center justify-center">
+          <div className="relative lg:w-2/3 min-h-[600px] lg:h-[600px] w-full flex flex-col lg:flex-row items-center justify-center gap-8 lg:gap-0 mt-12 lg:mt-0">
              
-             {/* Central Core */}
-             <div className="relative z-20 w-32 h-32 md:w-48 md:h-48 rounded-full bg-black border-2 border-brand-primary flex items-center justify-center shadow-[0_0_50px_hsla(var(--brand-primary)/0.3)] group">
+             {/* Central Core (Hidden or repositioned on mobile for better flow) */}
+             <div className="relative z-20 w-32 h-32 md:w-48 md:h-48 rounded-full bg-black border-2 border-brand-primary flex items-center justify-center shadow-[0_0_50px_hsla(var(--brand-primary)/0.3)] group lg:absolute">
                 <div className="absolute inset-0 rounded-full bg-brand-primary opacity-5 animate-pulse" />
                 <div className="absolute inset-2 border border-brand-primary/20 rounded-full animate-[spin_10s_linear_infinite]" />
                 <div className="text-center p-4">
@@ -114,24 +114,24 @@ export default function Benefits() {
                 </div>
              </div>
 
-             {/* Orbit Paths (Decorative) */}
-             <div className="absolute w-[80%] h-[80%] border border-white/5 rounded-full" />
-             <div className="absolute w-[60%] h-[60%] border border-white/5 rounded-full" />
+             {/* Orbit Paths (Decorative - Hidden on mobile) */}
+             <div className="absolute w-[80%] h-[80%] border border-white/5 rounded-full hidden lg:block" />
+             <div className="absolute w-[60%] h-[60%] border border-white/5 rounded-full hidden lg:block" />
 
              {/* Orbital Items */}
              {t.benefits.items.map((item, index) => {
-               // Calculate positions for circle (approximate with CSS positions for better responsive control)
-               const positions = [
-                 "top-0 left-0 lg:-top-10 lg:left-20", // 01
-                 "top-0 right-0 lg:top-20 lg:-right-10", // 02
-                 "bottom-0 left-0 lg:bottom-20 lg:-left-10", // 03
-                 "bottom-0 right-0 lg:-bottom-10 lg:right-20", // 04
+               // Orbital positions for desktop only
+               const desktopPositions = [
+                 "lg:-top-10 lg:left-20", // 01
+                 "lg:top-20 lg:-right-10", // 02
+                 "lg:bottom-20 lg:-left-10", // 03
+                 "lg:-bottom-10 lg:right-20", // 04
                ];
 
                return (
                  <div
                    key={index}
-                   className={`absolute ${positions[index]} group w-64 md:w-72 p-6 rounded-3xl glass border border-white/10 transition-all duration-500 hover:border-brand-primary hover:scale-110 hover:shadow-[0_0_30px_hsla(var(--brand-primary)/0.2)] animate-float`}
+                   className={`relative lg:absolute ${desktopPositions[index]} group w-full lg:w-72 p-6 rounded-3xl glass border border-white/10 transition-all duration-500 hover:border-brand-primary hover:scale-105 lg:hover:scale-110 animate-float`}
                    style={{ animationDelay: `${index * 0.5}s` }}
                  >
                     <div className="flex items-center gap-4 mb-4">

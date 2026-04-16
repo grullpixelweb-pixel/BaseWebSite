@@ -31,10 +31,10 @@ export default function Services() {
         </div>
 
         {/* Circular/Orbital Hub */}
-        <div className="relative h-[800px] md:h-[900px] w-full flex items-center justify-center">
+        <div className="relative min-h-[800px] lg:h-[900px] w-full flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-0">
           
           {/* Central Server Core */}
-          <div className="relative z-20 w-32 h-32 md:w-56 md:h-56 rounded-full bg-black border-4 border-brand-secondary/40 flex items-center justify-center shadow-[0_0_60px_hsla(var(--brand-secondary)/0.2)] group hover:border-brand-secondary transition-all duration-700">
+          <div className="relative z-20 w-32 h-32 md:w-56 md:h-56 rounded-full bg-black border-4 border-brand-secondary/40 flex items-center justify-center shadow-[0_0_60px_hsla(var(--brand-secondary)/0.2)] group hover:border-brand-secondary transition-all duration-700 lg:absolute">
              <div className="absolute inset-0 rounded-full bg-brand-secondary opacity-5 animate-pulse" />
              <div className="absolute -inset-4 border border-brand-secondary/10 rounded-full animate-[spin_15s_linear_infinite]" />
              <div className="absolute -inset-8 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
@@ -51,7 +51,7 @@ export default function Services() {
              </div>
           </div>
 
-          {/* Connection Lines (SVGs) */}
+          {/* Connection Lines (SVGs - Hidden on mobile) */}
           <div className="absolute inset-0 pointer-events-none hidden lg:block">
              <svg className="w-full h-full opacity-20" viewBox="0 0 1000 1000">
                 <line x1="500" y1="500" x2="500" y2="150" stroke="hsl(var(--brand-primary))" strokeWidth="1" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
@@ -66,23 +66,23 @@ export default function Services() {
             const isPopular = service.id === 2;
             const isEcosystem = service.id === 3;
 
-            // Orbital positions for 3 items
-            const positions = [
-              "top-[-50px] lg:top-[-100px] left-1/2 -translate-x-1/2", // Top (Lançamento)
-              "bottom-0 lg:bottom-0 left-[-20px] lg:left-[50px]", // Bottom Left (Identidade)
-              "bottom-0 lg:bottom-0 right-[-20px] lg:right-[50px]", // Bottom Right (Ecossistema)
+            // Orbital positions for desktop only
+            const desktopPositions = [
+              "lg:top-[-100px] lg:left-1/2 lg:-translate-x-1/2", // Top (Lançamento)
+              "lg:bottom-0 lg:left-[50px]", // Bottom Left (Identidade)
+              "lg:bottom-0 lg:right-[50px]", // Bottom Right (Ecossistema)
             ];
 
             return (
               <div
                 key={service.id}
-                className={`absolute ${positions[index]} flex flex-col w-72 md:w-80 p-8 rounded-3xl transition-all duration-700 group border h-fit glass ${
+                className={`relative lg:absolute ${desktopPositions[index]} flex flex-col w-full lg:w-80 p-8 rounded-3xl transition-all duration-700 group border h-fit glass ${
                   isPopular 
                     ? "border-brand-primary shadow-[0_0_40px_hsla(var(--brand-primary)/0.2)] z-30" 
                     : isEcosystem
                     ? "border-brand-secondary shadow-[0_0_40px_hsla(var(--brand-secondary)/0.2)] z-30"
                     : "border-white/10 z-20"
-                } hover:-translate-y-4 hover:scale-110`}
+                } hover:-translate-y-4 lg:hover:scale-110`}
               >
                 {/* ID & Status */}
                 <div className="flex justify-between items-center mb-6">
