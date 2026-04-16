@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Check, Plus } from "lucide-react";
+import { Check, Plus, Star } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useLanguage } from "../context/LanguageContext";
 
@@ -13,101 +13,105 @@ export default function Services() {
   return (
     <section
       id="servicios"
-      className="py-24 relative z-10"
-      style={{
-        background: "var(--bg-section)",
-        borderTop: "1px solid var(--border-faint)",
-      }}
+      className="py-44 relative z-10 overflow-hidden min-h-screen flex items-center justify-center"
+      style={{ background: "black" }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="absolute inset-0 motherboard-grid opacity-10"></div>
+      <div className="absolute inset-0 bg-radial-gradient from-brand-secondary/5 via-transparent to-transparent opacity-30" />
 
-        {/* Header */}
-        <div className="text-center">
-          <h2
-            className="text-3xl font-extrabold sm:text-4xl"
-            style={{ color: "var(--text-primary)" }}
-          >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        {/* Header (Floating above the orbit) */}
+        <div className="text-center mb-32">
+          <div className="inline-block px-4 py-1 border border-brand-primary/30 text-[10px] uppercase font-black tracking-[0.4em] text-brand-primary mb-6">
+             Infrastructure_Orbit: Package_Distribution
+          </div>
+          <h2 className="text-4xl md:text-7xl font-display font-black text-white mb-6">
             {t.servicesConfig.title}
           </h2>
-          <p
-            className="mt-4 max-w-2xl mx-auto text-xl"
-            style={{ color: "var(--text-muted)" }}
-          >
-            {t.servicesConfig.subtitle}
-          </p>
         </div>
 
-        {/* Cards grid */}
-        <div className="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => {
+        {/* Circular/Orbital Hub */}
+        <div className="relative h-[800px] md:h-[900px] w-full flex items-center justify-center">
+          
+          {/* Central Server Core */}
+          <div className="relative z-20 w-32 h-32 md:w-56 md:h-56 rounded-full bg-black border-4 border-brand-secondary/40 flex items-center justify-center shadow-[0_0_60px_hsla(var(--brand-secondary)/0.2)] group hover:border-brand-secondary transition-all duration-700">
+             <div className="absolute inset-0 rounded-full bg-brand-secondary opacity-5 animate-pulse" />
+             <div className="absolute -inset-4 border border-brand-secondary/10 rounded-full animate-[spin_15s_linear_infinite]" />
+             <div className="absolute -inset-8 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
+             
+             <div className="text-center p-4">
+               <div className="w-12 h-12 mx-auto mb-2 text-brand-secondary opacity-50">
+                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
+                   <rect x="2" y="2" width="20" height="8" rx="2" />
+                   <rect x="2" y="14" width="20" height="8" rx="2" />
+                   <path d="M6 6h.01M6 18h.01" strokeWidth="3" strokeLinecap="round" />
+                 </svg>
+               </div>
+               <span className="text-[10px] uppercase font-black tracking-widest text-brand-secondary block">Server_Hub</span>
+             </div>
+          </div>
+
+          {/* Connection Lines (SVGs) */}
+          <div className="absolute inset-0 pointer-events-none hidden lg:block">
+             <svg className="w-full h-full opacity-20" viewBox="0 0 1000 1000">
+                <line x1="500" y1="500" x2="500" y2="150" stroke="hsl(var(--brand-primary))" strokeWidth="1" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
+                <line x1="500" y1="500" x2="150" y2="750" stroke="hsl(var(--brand-primary))" strokeWidth="1" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
+                <line x1="500" y1="500" x2="850" y2="750" stroke="hsl(var(--brand-secondary))" strokeWidth="1" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
+             </svg>
+          </div>
+
+          {/* Tactical Cards Around the Core */}
+          {services.map((service, index) => {
             const isInCart = cart.some((item) => item.id === service.id);
             const isPopular = service.id === 2;
+            const isEcosystem = service.id === 3;
+
+            // Orbital positions for 3 items
+            const positions = [
+              "top-[-50px] lg:top-[-100px] left-1/2 -translate-x-1/2", // Top (Lançamento)
+              "bottom-0 lg:bottom-0 left-[-20px] lg:left-[50px]", // Bottom Left (Identidade)
+              "bottom-0 lg:bottom-0 right-[-20px] lg:right-[50px]", // Bottom Right (Ecossistema)
+            ];
 
             return (
               <div
                 key={service.id}
-                className="relative flex flex-col p-8 rounded-2xl shadow-xl transition-all duration-300 transform hover:-translate-y-2"
-                style={{
-                  background: "var(--bg-card, var(--bg-surface))",
-                  border: isPopular
-                    ? "2px solid #8b5cf6"
-                    : "1px solid var(--border-card, var(--border-soft))",
-                  boxShadow: isPopular
-                    ? "0 0 30px rgba(139,92,246,0.20), var(--shadow-card, 0 4px 24px rgba(0,0,0,0.3))"
-                    : "var(--shadow-card, 0 4px 24px rgba(0,0,0,0.3))",
-                  backdropFilter: "blur(16px)",
-                }}
+                className={`absolute ${positions[index]} flex flex-col w-72 md:w-80 p-8 rounded-3xl transition-all duration-700 group border h-fit glass ${
+                  isPopular 
+                    ? "border-brand-primary shadow-[0_0_40px_hsla(var(--brand-primary)/0.2)] z-30" 
+                    : isEcosystem
+                    ? "border-brand-secondary shadow-[0_0_40px_hsla(var(--brand-secondary)/0.2)] z-30"
+                    : "border-white/10 z-20"
+                } hover:-translate-y-4 hover:scale-110`}
               >
-                {/* Popular badge */}
-                {isPopular && (
-                  <div className="absolute top-0 right-1/2 translate-x-1/2 -translate-y-1/2">
-                    <span className="bg-gradient-to-r from-violet-600 to-fuchsia-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                      {t.servicesConfig.mostPopular}
-                    </span>
-                  </div>
-                )}
+                {/* ID & Status */}
+                <div className="flex justify-between items-center mb-6">
+                  <div className={`w-2 h-2 rounded-full animate-pulse ${isPopular ? "bg-brand-primary" : isEcosystem ? "bg-brand-secondary" : "bg-white/30"}`} />
+                  <span className="text-[10px] font-mono opacity-20 tracking-widest">MODULE_0{service.id}</span>
+                </div>
+
+                {/* Title & Price */}
+                <h3 className={`text-2xl font-display font-black mb-4 uppercase tracking-tighter ${isEcosystem ? "text-brand-secondary" : "text-white"}`}>
+                  {service.title}
+                </h3>
+                
+                <div className="mb-6 flex items-baseline gap-1 bg-white/[0.03] p-4 rounded-xl border border-white/5">
+                  <span className="text-[10px] font-mono opacity-30">BRL</span>
+                  <span className="text-3xl font-mono font-black text-brand-primary">
+                    {service.price}
+                  </span>
+                </div>
 
                 <div className="flex-1">
-                  {/* Title gradient */}
-                  <h3
-                    className={`text-2xl md:text-3xl font-extrabold pb-1 tracking-tight text-transparent bg-clip-text bg-gradient-to-r
-                      ${service.id === 1
-                        ? "from-cyan-400 to-blue-500"
-                        : service.id === 2
-                        ? "from-violet-400 to-fuchsia-400"
-                        : "from-amber-400 to-orange-500"
-                      }`}
-                  >
-                    {service.title}
-                  </h3>
-
-                  {/* Price */}
-                  <p className="mt-4 flex items-baseline">
-                    <span
-                      className="text-4xl font-extrabold tracking-tight"
-                      style={{ color: "var(--text-primary)" }}
-                    >
-                      R$ {service.price.toLocaleString("pt-BR")}
-                    </span>
-                  </p>
-
-                  {/* Description */}
-                  <p
-                    className="mt-6 text-sm"
-                    style={{ color: "var(--text-muted)" }}
-                  >
+                  <p className="mb-6 text-[10px] leading-relaxed opacity-40 font-black uppercase tracking-widest">
                     {service.description}
                   </p>
 
-                  {/* Features list */}
-                  <ul className="mt-6 space-y-4">
-                    {service.features.map((feature, index) => (
-                      <li key={index} className="flex items-start gap-3">
-                        <Check className="flex-shrink-0 w-5 h-5 text-blue-400 mt-0.5" />
-                        <span
-                          className="text-sm"
-                          style={{ color: "var(--text-secondary)" }}
-                        >
+                  <ul className="space-y-3 mb-8">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center gap-3">
+                        <div className={`w-1 h-1 rounded-full ${isEcosystem ? "bg-brand-secondary" : "bg-brand-primary"}`} />
+                        <span className="text-[10px] font-black uppercase tracking-widest text-white/60">
                           {feature}
                         </span>
                       </li>
@@ -115,37 +119,19 @@ export default function Services() {
                   </ul>
                 </div>
 
-                {/* Add button */}
-                <div className="mt-8">
-                  <button
-                    onClick={() => addToCart(service)}
-                    disabled={isInCart}
-                    className={`w-full flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-base font-medium transition-all
-                      ${isInCart
-                        ? "cursor-not-allowed"
-                        : "hover:bg-blue-600 hover:text-white hover:border-blue-500"
-                      }`}
-                    style={
-                      isInCart
-                        ? {
-                            background: "rgba(59,130,246,0.15)",
-                            color: "#60a5fa",
-                            border: "1px solid rgba(59,130,246,0.30)",
-                          }
-                        : {
-                            background: "var(--bg-surface-md, rgba(255,255,255,0.10))",
-                            color: "var(--text-primary)",
-                            border: "1px solid var(--border-soft)",
-                          }
-                    }
-                  >
-                    {isInCart ? (
-                      <><Check className="w-5 h-5" /> {t.servicesConfig.selected}</>
-                    ) : (
-                      <><Plus className="w-5 h-5" /> {t.servicesConfig.addModule}</>
-                    )}
-                  </button>
-                </div>
+                <button
+                  onClick={() => addToCart(service)}
+                  disabled={isInCart}
+                  className={`w-full py-4 rounded-xl font-black text-[10px] uppercase tracking-[0.3em] transition-all duration-500 ${
+                    isInCart
+                      ? "bg-white/5 text-white/20 border border-white/5"
+                      : isEcosystem
+                      ? "bg-brand-secondary text-black shadow-[0_0_15px_hsla(var(--brand-secondary)/0.3)]"
+                      : "bg-brand-primary text-black shadow-[0_0_15px_hsla(var(--brand-primary)/0.3)]"
+                  }`}
+                >
+                  {isInCart ? t.servicesConfig.selected : t.servicesConfig.addModule}
+                </button>
               </div>
             );
           })}

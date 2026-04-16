@@ -1,13 +1,13 @@
 "use client";
 
 import React from "react";
-import { X, Trash2, Send } from "lucide-react";
+import { X, Trash2, Send, ShoppingCart } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useLanguage } from "../context/LanguageContext";
 
 export default function Cart() {
   const { cart, removeFromCart, total } = useCart();
-  const { t, lang } = useLanguage();
+  const { t } = useLanguage();
 
   const formatPrice = (price: number) => price.toLocaleString("pt-BR");
 
@@ -30,79 +30,84 @@ export default function Cart() {
     window.open(whatsappUrl, "_blank");
   };
 
+  const closeCart = () => {
+    document.getElementById("cart-sidebar")?.classList.add("translate-x-full");
+  };
+
   return (
     <div
       id="cart-sidebar"
-      className="fixed inset-y-0 right-0 z-[60] w-full md:w-[400px] h-full transform translate-x-full transition-transform duration-300 ease-in-out bg-gray-950 border-l border-white/10 shadow-2xl flex flex-col"
+      className="fixed inset-y-0 right-0 z-[60] w-full md:w-[450px] h-full transform translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] glass shadow-2xl flex flex-col border-l"
+      style={{ borderColor: "hsla(var(--text-primary) / 0.1)" }}
     >
-      <div className="flex items-center justify-between p-6 border-b border-white/10 glass">
-        <h2 className="text-xl font-bold text-white flex items-center gap-2">
+      <div className="flex items-center justify-between p-8 border-b" style={{ borderColor: "hsla(var(--text-primary) / 0.05)" }}>
+        <h2 className="text-2xl font-display font-bold flex items-center gap-3" style={{ color: "hsl(var(--text-primary))" }}>
+          <ShoppingCart className="w-6 h-6 text-brand-primary" />
           {t.cart.title}
         </h2>
         <button
-          onClick={() =>
-            document
-              .getElementById("cart-sidebar")
-              ?.classList.add("translate-x-full")
-          }
-          className="text-gray-400 hover:text-white transition-colors"
+          onClick={closeCart}
+          className="p-2 rounded-xl hover:bg-white/5 transition-all opacity-50 hover:opacity-100"
+          style={{ color: "hsl(var(--text-primary))" }}
         >
           <X className="w-6 h-6" />
         </button>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-6 space-y-4">
+      <div className="flex-1 overflow-y-auto p-8 space-y-6">
         {cart.length === 0 ? (
-          <div className="text-center text-gray-500 mt-20 flex flex-col items-center">
-            <span className="text-6xl text-gray-700 block mb-4">🛒</span>
-            {t.cart.empty}
+          <div className="h-full flex flex-col items-center justify-center text-center opacity-40">
+            <div className="w-20 h-20 mb-6 rounded-full bg-white/5 flex items-center justify-center">
+              <ShoppingCart className="w-10 h-10" />
+            </div>
+            <p className="text-lg font-medium">{t.cart.empty}</p>
           </div>
         ) : (
           cart.map((item) => (
             <div
               key={item.id}
-              className="bg-white/5 border border-white/10 rounded-lg p-4 flex justify-between items-start"
+              className="group relative p-6 rounded-2xl border border-white/5 bg-white/5 transition-all hover:bg-white/10"
             >
-              <div className="flex-1 pr-4">
-                <h4 className="text-sm font-semibold text-gray-200">
+              <div className="flex justify-between items-start mb-2">
+                <h4 className="text-lg font-display font-bold pr-8" style={{ color: "hsl(var(--text-primary))" }}>
                   {item.title}
                 </h4>
-                <p className="text-lg font-bold text-blue-400 mt-1">
-                  R$ {formatPrice(item.price)}
-                </p>
+                <button
+                  onClick={() => removeFromCart(item.id)}
+                  className="text-red-500/50 hover:text-red-500 transition-colors p-1"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
               </div>
-              <button
-                onClick={() => removeFromCart(item.id)}
-                className="text-gray-500 hover:text-red-500 transition-colors p-1"
-                aria-label="Remove item"
-              >
-                <Trash2 className="w-5 h-5" />
-              </button>
+              <p className="text-xl font-black" style={{ color: "hsl(var(--brand-primary))" }}>
+                R$ {formatPrice(item.price)}
+              </p>
             </div>
           ))
         )}
       </div>
 
-      <div className="p-6 border-t border-white/10 glass">
-        <div className="flex justify-between items-center mb-6">
-          <span className="text-gray-400 text-lg">{t.cart.totalBg}</span>
-          <span className="text-3xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-500">
-            R$ {formatPrice(total)}
-          </span>
+      <div className="p-8 border-t space-y-8" style={{ borderColor: "hsla(var(--text-primary) / 0.05)" }}>
+        <div className="flex justify-between items-end">
+          <span className="text-sm font-black uppercase tracking-[0.2em] opacity-40">{t.cart.totalBg}</span>
+          <div className="text-right">
+            <span className="block text-4xl font-display font-black text-gradient">
+              R$ {formatPrice(total)}
+            </span>
+          </div>
         </div>
 
         <button
           onClick={handleCheckout}
           disabled={cart.length === 0}
-          className={`w-full py-4 rounded-xl flex items-center justify-center gap-3 font-bold text-lg transition-all shadow-lg
-            ${
-              cart.length === 0
-                ? "bg-gray-800 text-gray-500 cursor-not-allowed"
-                : "bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-400 hover:to-emerald-500 hover:shadow-green-500/30"
-            }
-          `}
+          className={`w-full py-5 rounded-2xl flex items-center justify-center gap-3 font-black text-sm uppercase tracking-widest transition-all duration-300 shadow-xl ${
+            cart.length === 0
+              ? "bg-white/5 text-muted cursor-not-allowed border border-white/5"
+              : "bg-[hsl(var(--brand-primary))] text-white hover:scale-[1.02] active:scale-[0.98] shadow-brand-primary/20"
+          }`}
+          style={cart.length > 0 ? { backgroundColor: "hsl(var(--brand-primary))" } : {}}
         >
-          <Send className="w-6 h-6" />
+          <Send className="w-5 h-5" />
           {t.cart.checkout}
         </button>
       </div>

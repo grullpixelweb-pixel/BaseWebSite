@@ -7,56 +7,39 @@ export const translations = {
       contact: "Contato",
     },
     hero: {
-      title1: "Sua presença digital",
-      title2: "não pode depender apenas de um 'Curtir'",
-      subtitle:
-        "Construa seu próprio território. Seu próprio site é sua casa digital, onde você dita as regras, exibe sua marca e seu negócio nunca fecha.",
+      title1: "Landing Pages & Branding",
+      title2: "Domine seu território digital",
+      subtitle: "",
       btnPlans: "Ver Planos",
       btnContact: "Fale Conosco",
     },
     benefits: {
-      sectionTitle: "Benefícios comerciais de ter um site",
-      sectionSubtitle: "Impacto nas Vendas e Percepção do Negócio",
+      sectionTitle: "Arquitetura de Alta Performance",
+      sectionSubtitle: "Transformando interação em lucro real.",
       summary:
         "Em resumo, as redes sociais são excelentes para chamar a atenção, mas o site é o centro de operações digitais onde as vendas são fechadas e a reputação é construída.",
       items: [
         {
+          title: "Ideia",
+          desc: "Transformamos sua visão em estratégia digital sólida.",
+        },
+        {
+          title: "Design",
+          desc: "Interfaces exclusivas focadas na experiência do usuário e alta estética.",
+        },
+        {
+          title: "Código",
+          desc: "Desenvolvimento robusto com tecnologias de ponta e performance extrema.",
+        },
+        {
           title: "Maior conversão",
           desc: "Converte interação em ação. Até 40% mais clientes chegam a concretizar operações com um site profissional.",
-        },
-        {
-          title: "Credibilidade e confiança",
-          desc: "84% dos consumidores afirmam que uma empresa com site transmite mais seriedade que apenas redes sociais.",
-        },
-        {
-          title: "Independência de algoritmos",
-          desc: "Você não depende de mudanças no Facebook ou Instagram que podem reduzir seu alcance de um dia para o outro.",
-        },
-        {
-          title: "Visibilidade em buscadores",
-          desc: "O SEO permite que seu negócio apareça no Google, onde os clientes buscam ativamente soluções.",
-        },
-        {
-          title: "Escalabilidade digital",
-          desc: "Adicione loja online, blog, chatbots e mais, adaptando o site ao crescimento do negócio.",
-        },
-        {
-          title: "Impacto em vendas",
-          desc: "Um e-commerce pode aumentar as vendas em 30-50% oferecendo disponibilidade 24/7.",
-        },
-        {
-          title: "Imagem profissional",
-          desc: "Transmite que seu negócio é estável, impactando diretamente na decisão de compra.",
-        },
-        {
-          title: "Estratégia combinada",
-          desc: "As redes sociais atraem tráfego e o site as converte em clientes reais.",
         },
       ],
     },
     servicesConfig: {
-      title: "Forjamos seu futuro digital",
-      subtitle: "Escolha os módulos que seu negócio precisa.",
+      title: "Explorar Ecossistemas",
+      subtitle: "Qual módulo você gostaria de conhecer?",
       mostPopular: "Mais Popular",
       addModule: "Adicionar",
       selected: "Selecionado",
@@ -68,9 +51,8 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Design Responsive + Deploy",
-            "Formulário",
-            "Sem integrações externas",
+            "Design Responsivo",
+            "Deploy",
           ],
         },
         {
@@ -79,10 +61,11 @@ export const translations = {
           price: 500,
           description: "Landing page x 3 com branding básico.",
           features: [
-            "Design responsivo + Deploy",
-            "Page Store (whatsapp, telegram)",
-            "Domínio (Cliente compra o domínio - registro.br)",
-            "SEO técnico.",
+            "Design Responsivo",
+            "Page Store Simple Connect carrinho de compras",
+            "Deploy",
+            "Assessoria de compra de domínio",
+            "Escalável",
           ],
         },
         {
@@ -91,11 +74,11 @@ export const translations = {
           price: 1000,
           description: "Funcionalidades complexas",
           features: [
+            "Primer Backend",
             "Auth (Google + Email)",
-            "Design - Deploy",
-            "Domínio (Cliente compra o domínio - registro.br)",
-            "Integrações de pagamento: Stripe, PayPal, Mercado Pago ou PagSeguro",
-            "Métricas",
+            "Design Responsivo",
+            "Deploy",
+            "Assessoria de domínio e integrações de pagamento: Stripe, PayPal, Mercado Pago ou PagSeguro",
           ],
         },
       ],
@@ -118,6 +101,7 @@ export const translations = {
       terms: "Termos",
       privacy: "Privacidade",
     },
+    spaceship: "Olá, sou Grull",
   },
   es: {
     navbar: {
@@ -127,56 +111,39 @@ export const translations = {
       contact: "Contacto",
     },
     hero: {
-      title1: "Tu presencia digital",
-      title2: "no puede depender solo de un 'Me Gusta'",
-      subtitle:
-        "Construye tu propio territorio. Tu propia web es tu casa digital, donde tú pones las reglas, exhibes tu marca y tu negocio nunca cierra.",
+      title1: "Landing Pages & Branding",
+      title2: "Domine su territorio digital",
+      subtitle: "",
       btnPlans: "Ver Planes",
       btnContact: "Contáctanos",
     },
     benefits: {
-      sectionTitle: "Beneficios comerciales de tener un sitio web",
-      sectionSubtitle: "Impacto en Ventas y Percepción del Negocio",
+      sectionTitle: "Arquitectura de Alto Impacto",
+      sectionSubtitle: "Transformando interacción en beneficios reales.",
       summary:
         "En resumen, las redes sociales son excelentes para captar atención y generar comunidad, pero el sitio web es el centro de operaciones digitales donde se cierran las ventas y se construye la reputación.",
       items: [
         {
+          title: "Idea",
+          desc: "Transformamos tu visión en una estrategia digital sólida.",
+        },
+        {
+          title: "Diseño",
+          desc: "Interfaces exclusivas enfocadas en la experiencia de usuario y estética de alto nivel.",
+        },
+        {
+          title: "Código",
+          desc: "Desarrollo robusto con tecnologías de vanguardia y rendimiento extremo.",
+        },
+        {
           title: "Mayor conversión",
-          desc: "Convierte interacción en acción. Un 40% más de clientes completan la venta con un sitio web.",
-        },
-        {
-          title: "Credibilidad y confianza",
-          desc: "El 84% de los consumidores afirma que una empresa con web transmite más seriedad.",
-        },
-        {
-          title: "Independencia de algoritmos",
-          desc: "No dependes de cambios en Facebook, Instagram o TikTok que pueden reducir tu alcance.",
-        },
-        {
-          title: "Visibilidad en buscadores",
-          desc: "El SEO permite que aparezcas en Google, donde tus clientes buscan activamente.",
-        },
-        {
-          title: "Escalabilidad digital",
-          desc: "Añade tiendas, blogs y más, adaptando la tecnología a tu crecimiento.",
-        },
-        {
-          title: "Impacto en ventas",
-          desc: "Aumenta ventas en un 30-50% al ofrecer disponibilidad 24/7.",
-        },
-        {
-          title: "Imagen profesional",
-          desc: "Transmite estabilidad comercial, influyendo la decisión crítica de compra.",
-        },
-        {
-          title: "Estrategia combinada",
-          desc: "Atrae tráfico en las redes sociales y cierra la venta en tu propia web.",
+          desc: "Convierte interacción en acción. Un 40% más de clientes completan la venta con un sitio web profesional.",
         },
       ],
     },
     servicesConfig: {
-      title: "Forjamos tu futuro digital",
-      subtitle: "Elige tus módulos.",
+      title: "Explorar Ecosistemas",
+      subtitle: "¿Qué módulo te gustaría conocer?",
       mostPopular: "Más Popular",
       addModule: "Añadir",
       selected: "Seleccionado",
@@ -188,21 +155,21 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Diseño Responsive + Deploy",
-            "Formulario",
-            "Sin integraciones externas",
+            "Diseño Responsivo",
+            "Deploy",
           ],
         },
         {
           id: 2,
           title: "Identidad Pro",
           price: 500,
-          description: "Landing page x 3 con branding básico.",
+          description: "Landing page x 3 com branding básico.",
           features: [
-            "Diseño responsivo + Deploy",
-            "Page Store (whatsapp, telegram)",
-            "Dominio (Cliente compra el dominio)",
-            "SEO técnico.",
+            "Diseño Responsivo",
+            "Page Store Simple Connect carrito de compras",
+            "Deploy",
+            "Asesoría de compra de dominio",
+            "Escalable",
           ],
         },
         {
@@ -211,11 +178,11 @@ export const translations = {
           price: 1000,
           description: "Funcionalidades complejas",
           features: [
+            "Primer Backend",
             "Auth (Google + Email)",
-            "Design - Deploy",
-            "Dominio (Cliente compra el dominio)",
-            "Integraciones de pago: Stripe, PayPal, Meli o PagSeguro",
-            "Métricas",
+            "Design Responsivo",
+            "Deploy",
+            "Asesoria de dominio y integraciones de pago: Stripe, PayPal, Mercado Pago o PagSeguro",
           ],
         },
       ],
@@ -238,6 +205,7 @@ export const translations = {
       terms: "Términos",
       privacy: "Privacidad",
     },
+    spaceship: "Hola soy Grull",
   },
   en: {
     navbar: {
@@ -247,56 +215,39 @@ export const translations = {
       contact: "Contact",
     },
     hero: {
-      title1: "Your digital presence",
-      title2: "can't rely on just a 'Like'",
-      subtitle:
-        "Build your own territory. Your own website is your digital home, where you set the rules and your business never closes.",
+      title1: "Landing Pages & Branding",
+      title2: "Dominate your digital territory",
+      subtitle: "",
       btnPlans: "View Plans",
       btnContact: "Contact Us",
     },
     benefits: {
-      sectionTitle: "Commercial benefits of having a website",
-      sectionSubtitle: "Impact on Sales & Business Perception",
+      sectionTitle: "High-Performance Architecture",
+      sectionSubtitle: "Turning digital interaction into real profit.",
       summary:
         "In short, social networks are great for getting attention, but your website is the digital operations center where sales are closed and reputation is built.",
       items: [
         {
+          title: "Idea",
+          desc: "We turn your vision into a solid digital strategy.",
+        },
+        {
+          title: "Design",
+          desc: "Exclusive interfaces focused on UX and high-end aesthetics.",
+        },
+        {
+          title: "Code",
+          desc: "Robust development with cutting-edge tech and extreme performance.",
+        },
+        {
           title: "Higher conversion",
           desc: "Turns interaction into action. Up to 40% more customers close deals with a professional site.",
-        },
-        {
-          title: "Credibility and trust",
-          desc: "84% of consumers say a business with a website is more credible than social media alone.",
-        },
-        {
-          title: "Algorithm independence",
-          desc: "You don't depend on Facebook or Instagram's random shifts that shrink your reach.",
-        },
-        {
-          title: "Search engine visibility",
-          desc: "SEO lets your business pop up on Google, where clients actively search for you.",
-        },
-        {
-          title: "Digital scalability",
-          desc: "Add online stores, blogs, and more, adapting your site to business growth.",
-        },
-        {
-          title: "Impact on sales",
-          desc: "E-commerce boosts sales by 30-50% with 24/7 round-the-clock availability.",
-        },
-        {
-          title: "Professional image",
-          desc: "Communicates that you are established, directly impacting purchasing decisions.",
-        },
-        {
-          title: "Combined strategy",
-          desc: "Use social media for traffic, and use your website to convert it into actual money.",
         },
       ],
     },
     servicesConfig: {
-      title: "We forge your future",
-      subtitle: "Choose your modules.",
+      title: "Explore Ecosystems",
+      subtitle: "Which module would you like to explore?",
       mostPopular: "Trending",
       addModule: "Add",
       selected: "Added",
@@ -308,9 +259,8 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Responsive Design + Deploy",
-            "Form",
-            "No external integrations",
+            "Responsive Design",
+            "Deploy",
           ],
         },
         {
@@ -319,10 +269,11 @@ export const translations = {
           price: 500,
           description: "Landing page x 3 with basic branding.",
           features: [
-            "Responsive Design + Deploy",
-            "Page Store (WhatsApp, Telegram)",
-            "Domain (Purchased by client)",
-            "Technical SEO.",
+            "Responsive Design",
+            "Page Store Simple Connect shopping cart",
+            "Deploy",
+            "Domain purchase advice",
+            "Scalable",
           ],
         },
         {
@@ -331,11 +282,11 @@ export const translations = {
           price: 1000,
           description: "Complex features",
           features: [
+            "Primary Backend",
             "Auth (Google + Email)",
-            "Design - Deploy",
-            "Domain (Purchased by client)",
-            "Payment integrations: Stripe, PayPal, etc.",
-            "Metrics",
+            "Responsive Design",
+            "Deploy",
+            "Domain advice & payment integrations: Stripe, PayPal, Mercado Pago or PagSeguro",
           ],
         },
       ],
@@ -358,6 +309,7 @@ export const translations = {
       terms: "Terms",
       privacy: "Privacy",
     },
+    spaceship: "Hi, I'm Grull",
   },
 };
 

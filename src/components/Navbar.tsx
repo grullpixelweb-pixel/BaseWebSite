@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
-import { Menu, X, ShoppingCart, Globe } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { X, ShoppingCart, MessageCircle } from "lucide-react";
 import { useCart } from "../context/CartContext";
 import { useLanguage } from "../context/LanguageContext";
 import { Language } from "../locales/translations";
@@ -9,9 +9,24 @@ import { useTheme } from "../context/ThemeContext";
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { cart, clearCart } = useCart();
   const { t, lang, setLang } = useLanguage();
   const { theme, toggleTheme } = useTheme();
+
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+  }, [isOpen]);
 
   const handleLangChange = (l: Language) => {
     if (l !== lang) {
@@ -20,184 +35,131 @@ export default function Navbar() {
     }
   };
 
+  const navLinks = [
+    { href: "#inicio", label: t.navbar.home, num: "01/" },
+    { href: "#beneficios", label: t.navbar.benefits, num: "02/" },
+    { href: "#servicios", label: t.navbar.services, num: "03/" },
+    { href: "#contacto", label: t.navbar.contact, num: "04/" },
+  ];
+
   return (
-    <nav
-      className="fixed w-full z-50 glass border-b"
-      style={{ borderColor: "var(--border-soft)" }}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <div className="flex-shrink-0 flex items-center gap-2 lg:gap-3">
-            <div className="w-8 h-8 lg:w-10 lg:h-10 bg-gradient-to-br from-blue-500 to-violet-500 rounded-lg flex items-center justify-center font-bold text-sm lg:text-xl text-white shadow-lg shadow-blue-500/20">
-              GP
-            </div>
-            <span
-              className="font-bold text-sm sm:text-base lg:text-xl tracking-tight whitespace-nowrap"
-              style={{ color: "var(--text-primary)" }}
-            >
-              Grull Picture Web
-            </span>
-          </div>
+    <>
+      <nav className={`fixed w-full z-[60] transition-all duration-500 py-6 px-12 flex items-center justify-between ${scrolled ? "bg-bg-base/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
+        }`}>
+        {/* Logo */}
+        <a href="#inicio" className="text-xl font-display font-black tracking-tighter uppercase whitespace-nowrap">
+          Grull Picture Web
+        </a>
 
-          {/* Desktop nav */}
-          <div className="hidden md:block">
-            <div className="md:ml-4 lg:ml-10 flex items-center md:space-x-3 lg:space-x-8">
-              <a href="#inicio"     style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.home}</a>
-              <a href="#beneficios" style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.benefits}</a>
-              <a href="#servicios"  style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.services}</a>
-              <a href="#contacto"   style={{ color: "var(--text-muted)" }} className="text-sm lg:text-base hover:opacity-100 transition-opacity">{t.navbar.contact}</a>
+        {/* Action icons + Menu Toggle */}
+        <div className="flex items-center gap-6">
+          <button
+            className="relative p-2 opacity-50 hover:opacity-100 transition-opacity"
+            onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
+          >
+            <ShoppingCart className="w-5 h-5" />
+            {cart.length > 0 && (
+              <span className="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center text-[10px] font-bold text-black bg-brand-primary rounded-full">
+                {cart.length}
+              </span>
+            )}
+          </button>
 
-              {/* Language */}
-              <div className="flex items-center gap-1 lg:gap-2 border-l md:pl-3 lg:pl-6" style={{ borderColor: "var(--border-soft)" }}>
-                <Globe className="w-4 h-4 hidden lg:block" style={{ color: "var(--text-muted)" }} />
-                {(["pt","es","en"] as Language[]).map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => handleLangChange(l)}
-                    className={`text-xs font-bold px-1 py-0.5 rounded transition-colors ${
-                      lang === l
-                        ? "bg-blue-500/20 text-blue-400"
-                        : "hover:opacity-80"
-                    }`}
-                    style={{ color: lang === l ? undefined : "var(--text-muted)" }}
-                  >
-                    {l.toUpperCase()}
-                  </button>
-                ))}
-              </div>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className={`w-14 h-14 rounded-full glass border flex flex-col items-center justify-center gap-1.5 group transition-all duration-500 hover:scale-110 z-[100] relative ${isOpen
+              ? "border-brand-secondary shadow-[0_0_20px_hsla(var(--brand-secondary)/0.5)]"
+              : "border-brand-primary/40 hover:border-brand-primary shadow-[0_0_15px_hsla(var(--brand-primary)/0.3)]"
+              }`}
+          >
+            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary rotate-45 translate-y-[7px]" : "bg-brand-primary"}`} />
+            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-transparent opacity-0" : "bg-brand-primary"}`} />
+            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary -rotate-45 -translate-y-[7px]" : "bg-brand-primary"}`} />
+          </button>
+        </div>
+      </nav>
 
-              {/* Theme toggle switch */}
-              <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
+      {/* Full-screen Menu Overlay */}
+      <div className={`fixed inset-0 z-[55] flex flex-col md:flex-row transition-all duration-700 ease-in-out ${isOpen ? "translate-y-0" : "-translate-y-full"
+        }`}>
+        {/* Left Side: Navigation */}
+        <div className="w-full md:w-1/2 h-full bg-black p-12 md:p-24 flex flex-col justify-between relative overflow-hidden border-b md:border-b-0 md:border-r border-brand-primary/10">
+          <div className="absolute inset-0 motherboard-grid opacity-10"></div>
 
-              {/* Cart */}
-              <button
-                className="relative p-2 transition-colors md:ml-1 lg:ml-2"
-                style={{ color: "var(--text-muted)" }}
-                onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
+          <div className="relative z-10 pt-24 space-y-4 md:space-y-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => {
+                  setIsOpen(false);
+                  // Allow standard anchor behavior for hash links
+                }}
+                className="group flex items-baseline gap-4 md:gap-8 text-4xl md:text-8xl font-display font-black hover:translate-x-4 transition-all duration-500 text-white/40 hover:text-white"
               >
-                <ShoppingCart className="w-6 h-6" />
-                {cart.length > 0 && (
-                  <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-blue-600 rounded-full">
-                    {cart.length}
-                  </span>
-                )}
+                <span className="text-sm md:text-base font-sans font-black tracking-widest text-brand-primary opacity-40 group-hover:opacity-100 group-hover:drop-shadow-[0_0_8px_hsla(var(--brand-primary)/0.6)]">{link.num}</span>
+                {link.label}
+              </a>
+            ))}
+          </div>
+
+          <div className="relative z-10 flex items-center gap-8 py-8 md:py-0 border-t border-white/5 md:border-t-0">
+            {(["pt", "es", "en"] as Language[]).map((l) => (
+              <button
+                key={l}
+                onClick={() => handleLangChange(l)}
+                className={`text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 ${lang === l ? "text-brand-primary drop-shadow-[0_0_8px_hsla(var(--brand-primary)/0.5)]" : "text-white/30 hover:text-white"
+                  }`}
+              >
+                {l === "pt" ? "Português" : l === "es" ? "Español" : "English"}
               </button>
+            ))}
+          </div>
+        </div>
+
+        {/* Right Side: Contact / CTA */}
+        <div className="w-full md:w-1/2 h-full bg-black p-12 md:p-24 flex flex-col justify-center items-center text-center relative overflow-hidden">
+          <div className="absolute inset-0 circuit-pattern opacity-[0.03]"></div>
+
+          <div className="relative z-10 w-full max-w-md">
+            <div className="mb-4 inline-block px-4 py-1 border border-brand-primary/20 text-[10px] uppercase font-black tracking-[0.4em] text-brand-primary">
+              Status: Available
+            </div>
+
+            <div className="flex flex-col items-center gap-12 mt-12">
+              <a
+                href="https://wa.me/5511981718899"
+                className="group relative flex items-center justify-between gap-8 p-1 border border-brand-primary/30 rounded-full pl-10 pr-1 hover:border-brand-primary hover:bg-brand-primary/5 transition-all duration-500 shadow-[0_0_30px_rgba(255,255,255,0.02)]"
+              >
+                <span className="text-white font-black uppercase tracking-widest text-sm">Fale com a Grull</span>
+                <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform shadow-[0_0_20px_hsla(var(--brand-primary)/0.4)]">
+                  <svg className="w-7 h-7 text-black stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+                  </svg>
+                </div>
+              </a>
+
+              <div className="flex gap-10 opacity-30 hover:opacity-100 transition-opacity">
+                <a href="https://www.instagram.com/grullpixel/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors">
+                  <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
 
-          {/* Mobile: cart + theme + menu */}
-          <div className="-mr-2 flex items-center md:hidden gap-2">
-            <ThemeToggle theme={theme} toggleTheme={toggleTheme} />
-            <button
-              className="relative p-2 transition-colors"
-              style={{ color: "var(--text-muted)" }}
-              onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
-            >
-              <ShoppingCart className="w-6 h-6" />
-              {cart.length > 0 && (
-                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-blue-600 rounded-full">
-                  {cart.length}
-                </span>
-              )}
-            </button>
-            <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="inline-flex items-center justify-center p-2 rounded-md transition-colors focus:outline-none"
-              style={{ color: "var(--text-muted)" }}
-            >
-              {isOpen ? <X className="block h-6 w-6" /> : <Menu className="block h-6 w-6" />}
-            </button>
+          {/* Decorative LCD corner */}
+          <div className="absolute bottom-10 right-10 opacity-10">
+            <div className="text-[10px] font-mono text-brand-primary text-right">
+              GRULL_PICTURE_WEB_v2.0<br />
+              COORD: 23.5505° S, 46.6333° W
+            </div>
           </div>
         </div>
       </div>
-
-      {/* Mobile menu */}
-      {isOpen && (
-        <div className="md:hidden glass border-t" style={{ borderColor: "var(--border-faint)" }}>
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {[
-              { href: "#inicio",     label: t.navbar.home },
-              { href: "#beneficios", label: t.navbar.benefits },
-              { href: "#servicios",  label: t.navbar.services },
-              { href: "#contacto",   label: t.navbar.contact },
-            ].map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                className="block px-3 py-2 rounded-md text-base font-medium transition-colors"
-                style={{ color: "var(--text-muted)" }}
-                onMouseEnter={e => (e.currentTarget.style.color = "var(--text-primary)")}
-                onMouseLeave={e => (e.currentTarget.style.color = "var(--text-muted)")}
-              >
-                {label}
-              </a>
-            ))}
-
-            <div className="px-3 py-4 mt-2 border-t" style={{ borderColor: "var(--border-soft)" }}>
-              <p className="text-sm mb-3 flex items-center gap-2" style={{ color: "var(--text-muted)" }}>
-                <Globe className="w-4 h-4" /> Idioma / Language
-              </p>
-              <div className="flex items-center gap-2">
-                {(["pt","es","en"] as Language[]).map((l) => (
-                  <button
-                    key={l}
-                    onClick={() => handleLangChange(l)}
-                    className={`text-sm font-bold px-3 py-1.5 rounded-md flex-1 border transition-colors ${
-                      lang === l
-                        ? "bg-blue-500/20 text-blue-400 border-blue-500/30"
-                        : "border-opacity-20"
-                    }`}
-                    style={lang !== l ? { borderColor: "var(--border-soft)", color: "var(--text-muted)", background: "var(--bg-surface)" } : {}}
-                  >
-                    {l.toUpperCase()}
-                  </button>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-}
-
-/* ── Theme Toggle Switch ─────────────────────────────────────────── */
-function ThemeToggle({ theme, toggleTheme }: { theme: "dark" | "light"; toggleTheme: () => void }) {
-  const isDark = theme === "dark";
-  return (
-    <button
-      onClick={toggleTheme}
-      aria-label="Toggle theme"
-      title={isDark ? "Cambiar a modo claro" : "Cambiar a modo oscuro"}
-      className="relative inline-flex items-center w-14 h-7 rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500/50 focus:ring-offset-1 flex-shrink-0"
-      style={{
-        background: isDark
-          ? "linear-gradient(135deg, #1e1b4b, #312e81)"
-          : "linear-gradient(135deg, #bfdbfe, #ddd6fe)",
-        boxShadow: isDark
-          ? "0 0 12px rgba(99,102,241,0.4)"
-          : "0 0 12px rgba(167,139,250,0.3)",
-      }}
-    >
-      {/* Track icons */}
-      <span className="absolute left-1.5 text-xs select-none" style={{ opacity: isDark ? 0.9 : 0.4 }}>
-        🌙
-      </span>
-      <span className="absolute right-1.5 text-xs select-none" style={{ opacity: isDark ? 0.4 : 0.9 }}>
-        ☀️
-      </span>
-      {/* Knob */}
-      <span
-        className="absolute w-5 h-5 rounded-full shadow-md transition-all duration-300 flex items-center justify-center text-[9px] font-black"
-        style={{
-          left: isDark ? "4px" : "calc(100% - 24px)",
-          background: isDark ? "#f9fafb" : "#7c3aed",
-          color: isDark ? "#1e1b4b" : "#fff",
-        }}
-      >
-        {isDark ? "I" : "O"}
-      </span>
-    </button>
+    </>
   );
 }
