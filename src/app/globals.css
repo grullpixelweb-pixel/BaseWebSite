@@ -3,7 +3,7 @@
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui;
   --font-display: var(--font-outfit), ui-sans-serif, system-ui;
-  
+
   --color-brand-primary: hsl(var(--brand-primary));
   --color-brand-secondary: hsl(var(--brand-secondary));
   --color-brand-accent: hsl(var(--brand-accent));
@@ -19,22 +19,26 @@
 }
 
 html.dark {
-  --brand-primary: 74 100% 60%;    /* Neon Acid Green (Like the image) */
-  --brand-secondary: 320 100% 60%; /* Electric Magenta / Pink */
-  --brand-accent: 180 100% 50%;    /* Tech Cyan */
-  
-  --bg-base: 0 0% 0%;             /* Pure Black for maximum LCD glow */
+  --brand-primary: 74 100% 60%;
+  /* Neon Acid Green (Like the image) */
+  --brand-secondary: 320 100% 60%;
+  /* Electric Magenta / Pink */
+  --brand-accent: 180 100% 50%;
+  /* Tech Cyan */
+
+  --bg-base: 0 0% 0%;
+  /* Pure Black for maximum LCD glow */
   --bg-section: 0 0% 2%;
   --bg-surface: 0 0% 4%;
   --bg-card: 0 0% 6%;
-  
+
   --text-primary: 0 0% 100%;
   --text-secondary: 74 20% 80%;
   --text-muted: 74 10% 50%;
-  
+
   --border-soft: 74 100% 60% / 0.1;
   --border-glow: 74 100% 60% / 0.3;
-  
+
   --selection-bg: 74 100% 60% / 0.4;
 }
 
@@ -42,19 +46,19 @@ html.light {
   --brand-primary: 230 90% 60%;
   --brand-secondary: 260 85% 55%;
   --brand-accent: 320 80% 50%;
-  
+
   --bg-base: 220 100% 98%;
   --bg-section: 220 100% 96%;
   --bg-surface: 0 0% 100% / 0.8;
   --bg-card: 0 0% 100%;
-  
+
   --text-primary: 224 71% 10%;
   --text-secondary: 224 30% 30%;
   --text-muted: 224 20% 50%;
-  
+
   --border-soft: 224 71% 90%;
   --border-glow: 230 90% 60% / 0.05;
-  
+
   --selection-bg: 230 90% 60% / 0.2;
 }
 
@@ -68,10 +72,15 @@ body {
   transition: background-color 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-h1, h2, h3, h4, .font-display {
+h1,
+h2,
+h3,
+h4,
+.font-display {
   font-family: var(--font-display);
   font-weight: 700;
-  letter-spacing: -0.04em; /* Tighter for Peak Studio look */
+  letter-spacing: -0.04em;
+  /* Tighter for Peak Studio look */
 }
 
 ::selection {
@@ -112,7 +121,7 @@ h1, h2, h3, h4, .font-display {
     border: 1px solid transparent;
     background-clip: padding-box;
   }
-  
+
   .border-gradient::before {
     content: "";
     position: absolute;
@@ -125,8 +134,14 @@ h1, h2, h3, h4, .font-display {
 }
 
 /* ── Custom Scrollbar ────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 8px; }
-::-webkit-scrollbar-track { background: hsl(var(--bg-base)); }
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--bg-base));
+}
+
 ::-webkit-scrollbar-thumb {
   background: hsla(var(--text-muted) / 0.2);
   border-radius: 10px;
@@ -134,8 +149,15 @@ h1, h2, h3, h4, .font-display {
 
 /* ── Attention-Grabbing Animations ───────────────────────────────── */
 @keyframes reveal-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .reveal-up {
@@ -143,13 +165,58 @@ h1, h2, h3, h4, .font-display {
 }
 
 @keyframes orbit {
-  from { transform: rotate(0deg) translateX(20px) rotate(0deg); }
-  to { transform: rotate(360deg) translateX(20px) rotate(-360deg); }
+  from {
+    transform: rotate(0deg) translateX(20px) rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg) translateX(20px) rotate(-360deg);
+  }
 }
 
 .animate-orbit {
   animation: orbit 10s linear infinite;
 }
+
+  @keyframes flicker {
+    0%, 100% { opacity: 0.8; transform: scaleY(1); }
+    50% { opacity: 1; transform: scaleY(1.2); }
+  }
+
+  @keyframes hustle {
+    0% { background-position: 0 0; }
+    100% { background-position: 50px 50px; }
+  }
+
+  @keyframes fin-rotate {
+    0%, 100% { transform: translateY(0) scaleY(1) skewY(0deg); opacity: 0.8; }
+    25% { transform: translateY(-15px) scaleY(0.5) skewY(10deg); opacity: 0.4; }
+    50% { transform: translateY(0) scaleY(0.1) skewY(0deg); opacity: 0.2; }
+    75% { transform: translateY(15px) scaleY(0.5) skewY(-10deg); opacity: 0.4; }
+  }
+
+  @keyframes fin-rotate-reverse {
+    0%, 100% { transform: translateY(0) scaleY(1) skewY(0deg); opacity: 0.8; }
+    25% { transform: translateY(15px) scaleY(0.5) skewY(-10deg); opacity: 0.4; }
+    50% { transform: translateY(0) scaleY(0.1) skewY(0deg); opacity: 0.2; }
+    75% { transform: translateY(-15px) scaleY(0.5) skewY(10deg); opacity: 0.4; }
+  }
+
+  .animate-fin-rotate {
+    animation: fin-rotate 1s ease-in-out infinite;
+  }
+
+  .animate-fin-rotate-reverse {
+    animation: fin-rotate-reverse 1.2s ease-in-out infinite;
+  }
+
+  .animate-hustle {
+    animation: hustle 0.5s linear infinite;
+  }
+
+  .animate-flicker {
+    animation: flicker 0.1s ease-in-out infinite;
+  }
 
 /* Scroll reveal helper */
 .reveal-on-scroll {
@@ -168,29 +235,74 @@ h1, h2, h3, h4, .font-display {
 
 /* ── Animations ──────────────────────────────────────────────────── */
 @keyframes loading-bar {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+  0% {
+    transform: translateX(-100%);
+  }
+
+  100% {
+    transform: translateX(100%);
+  }
 }
-.animate-loading-bar { animation: loading-bar 1.5s ease-in-out infinite; }
+
+.animate-loading-bar {
+  animation: loading-bar 1.5s ease-in-out infinite;
+}
 
 @keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
 }
-.animate-float { animation: float 6s ease-in-out infinite; }
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
 
 @keyframes morph {
-  0%, 100% { border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%; }
-  34% { border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%; }
-  67% { border-radius: 30% 60% 60% 40% / 70% 60% 40% 30%; }
+
+  0%,
+  100% {
+    border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+  }
+
+  34% {
+    border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+  }
+
+  67% {
+    border-radius: 30% 60% 60% 40% / 70% 60% 40% 30%;
+  }
 }
-.animate-morph { animation: morph 8s ease-in-out infinite; }
+
+.animate-morph {
+  animation: morph 8s ease-in-out infinite;
+}
+
 /* ── Spaceship Sonic Streak ──────────────────────────────────────── */
 @keyframes spaceship-streak {
-  0% { transform: translateX(-150vw) translateY(20vh) skewX(30deg) scale(0.5); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translateX(150vw) translateY(-20vh) skewX(30deg) scale(0.5); opacity: 0; }
+  0% {
+    transform: translateX(-150vw) translateY(20vh) skewX(30deg) scale(0.5);
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(150vw) translateY(-20vh) skewX(30deg) scale(0.5);
+    opacity: 0;
+  }
 }
 
 .animate-spaceship {
@@ -198,8 +310,15 @@ h1, h2, h3, h4, .font-display {
 }
 
 @keyframes shockwave {
-  0% { transform: scale(0.5); opacity: 0.5; }
-  100% { transform: scale(4); opacity: 0; }
+  0% {
+    transform: scale(0.5);
+    opacity: 0.5;
+  }
+
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 .animate-shockwave {
@@ -207,47 +326,128 @@ h1, h2, h3, h4, .font-display {
 }
 
 @keyframes spaceship-streak-v2 {
-  0% { transform: translateX(-150vw) translateY(10vh) skewX(20deg) scale(0.4); opacity: 0; }
-  5% { opacity: 1; }
-  95% { opacity: 1; }
-  100% { transform: translateX(150vw) translateY(-10vh) skewX(20deg) scale(0.6); opacity: 0; }
+  0% {
+    transform: translateX(-150vw) translateY(10vh) skewX(20deg) scale(0.4);
+    opacity: 0;
+  }
+
+  5% {
+    opacity: 1;
+  }
+
+  95% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateX(150vw) translateY(-10vh) skewX(20deg) scale(0.6);
+    opacity: 0;
+  }
 }
 
 .animate-spaceship-v2 {
   animation: spaceship-streak-v2 4s cubic-bezier(0.1, 0, 0, 1) infinite;
 }
 
-/* ── Ultra Fast Bullet Streak ───────────────────────────────────── */
+/* ── Ultra Fast 3D Bullet Streak ────────────────────────────────── */
 @keyframes bullet-slide {
-  0% { transform: translate(-100vw, 5vh); opacity: 0; }
-  10% { opacity: 1; }
-  90% { opacity: 1; }
-  100% { transform: translate(100vw, -5vh); opacity: 0; }
+  0% {
+    transform: translate(-100vw, 5vh) scale(0.5) rotateX(20deg);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  50% {
+    transform: translate(50vw, 0) scale(1.4) rotateX(0deg);
+    opacity: 1;
+  }
+  80% { opacity: 1; }
+  100% {
+    transform: translate(150vw, -10vh) scale(0.5) rotateX(-20deg);
+    opacity: 0;
+  }
+}
+
+@keyframes bullet-slide-reverse {
+  0% {
+    transform: translate(100vw, 10vh) scale(0.5) rotateX(-20deg) rotateY(180deg);
+    opacity: 0;
+  }
+  20% { opacity: 1; }
+  50% {
+    transform: translate(-50vw, 0) scale(1.4) rotateX(0deg) rotateY(180deg);
+    opacity: 1;
+  }
+  80% { opacity: 1; }
+  100% {
+    transform: translate(-150vw, -5vh) scale(0.5) rotateX(20deg) rotateY(180deg);
+    opacity: 0;
+  }
 }
 
 .animate-bullet-slide {
-  animation: bullet-slide 2s cubic-bezier(0.1, 0, 0, 1) infinite;
+  animation: bullet-slide 3s cubic-bezier(0.1, 0, 0, 1) infinite;
+}
+
+.animate-bullet-slide-reverse {
+  animation: bullet-slide-reverse 4s cubic-bezier(0.1, 0, 0, 1) infinite;
 }
 
 /* ── SVG Animations (Moved from internal styled-jsx) ────────────── */
 @keyframes grow-path {
-  0% { stroke-dashoffset: 100; }
-  40%, 100% { stroke-dashoffset: 0; }
+  0% {
+    stroke-dashoffset: 100;
+  }
+
+  40%,
+  100% {
+    stroke-dashoffset: 0;
+  }
 }
 
 @keyframes pop-leaf {
-  0%, 40% { opacity: 0; transform: scale(0); }
-  50%, 100% { opacity: 1; transform: scale(1); }
+
+  0%,
+  40% {
+    opacity: 0;
+    transform: scale(0);
+  }
+
+  50%,
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 @keyframes cat-curl {
-  0% { stroke-dashoffset: 200; transform: rotate(0deg); }
-  40% { stroke-dashoffset: 0; transform: rotate(10deg); }
-  60% { stroke-dashoffset: 0; transform: rotate(-5deg); }
-  100% { stroke-dashoffset: 200; transform: rotate(0deg); }
+  0% {
+    stroke-dashoffset: 200;
+    transform: rotate(0deg);
+  }
+
+  40% {
+    stroke-dashoffset: 0;
+    transform: rotate(10deg);
+  }
+
+  60% {
+    stroke-dashoffset: 0;
+    transform: rotate(-5deg);
+  }
+
+  100% {
+    stroke-dashoffset: 200;
+    transform: rotate(0deg);
+  }
 }
 
 @keyframes code-type {
-  0% { width: 0; }
-  50%, 100% { width: 100%; }
+  0% {
+    width: 0;
+  }
+
+  50%,
+  100% {
+    width: 100%;
+  }
 }

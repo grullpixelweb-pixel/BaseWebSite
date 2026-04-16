@@ -8,12 +8,12 @@ import Preloader from "../components/Preloader";
 import CustomCursor from "../components/CustomCursor";
 import TechFloaters from "../components/TechFloaters";
 
-const inter = Inter({ 
+const inter = Inter({
   subsets: ["latin"],
   variable: '--font-inter',
 });
 
-const outfit = Outfit({ 
+const outfit = Outfit({
   subsets: ["latin"],
   variable: '--font-outfit',
 });
@@ -37,11 +37,11 @@ export default function RootLayout({
         {/* Design Layers */}
         <div className="fixed inset-0 pointer-events-none z-[0] motherboard-grid opacity-10"></div>
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay noise-bg"></div>
-        
+
         <CustomCursor />
         <TechFloaters />
         <Preloader />
-        
+
         <ThemeProvider>
           <LanguageProvider>
             <CartProvider>

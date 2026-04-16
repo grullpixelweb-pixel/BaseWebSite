@@ -54,19 +54,16 @@ export default function CustomCursor() {
     <>
       <div 
         ref={dotRef}
-        className="fixed top-0 left-0 w-4 h-4 bg-brand-primary pointer-events-none z-[10001] [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)] shadow-[0_0_15px_hsl(var(--brand-primary))] drop-shadow-[0_0_8px_hsl(var(--brand-primary))]"
+        className="fixed top-0 left-0 w-2 h-2 bg-brand-primary rounded-full pointer-events-none z-[10001] shadow-[0_0_15px_hsl(var(--brand-primary))]"
         style={{ willChange: 'transform' }}
       />
       <div 
         ref={ringRef}
-        className={`fixed top-0 left-0 pointer-events-none z-[10000] transition-[width,height,background-color] duration-500 ease-out flex items-center justify-center ${
-          isPointer ? "w-28 h-28 bg-brand-primary/25" : "w-16 h-16 bg-brand-primary/10"
-        } [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)] border border-brand-primary/40`}
+        className={`fixed top-0 left-0 border border-brand-primary/40 rounded-full pointer-events-none z-[10000] transition-[width,height,background-color] duration-500 ease-out flex items-center justify-center ${
+          isPointer ? "w-16 h-16 bg-brand-primary/10" : "w-8 h-8 bg-transparent"
+        }`}
         style={{ willChange: 'transform' }}
-      >
-        {/* Decorative rotating scanner */}
-        <div className="w-[92%] h-[92%] border-2 border-brand-primary/60 [clip-path:polygon(25%_0%,75%_0%,100%_50%,75%_100%,25%_100%,0%_50%)] animate-[spin_6s_linear_infinite]" />
-      </div>
+      />
     </>
   );
 }
