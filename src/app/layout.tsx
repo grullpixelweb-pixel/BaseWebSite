@@ -7,6 +7,7 @@ import { ThemeProvider } from "../context/ThemeContext";
 import Preloader from "../components/Preloader";
 import CustomCursor from "../components/CustomCursor";
 import TechFloaters from "../components/TechFloaters";
+import ProjectileFX from "../components/ProjectileFX";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -41,6 +42,7 @@ export default function RootLayout({
         <CustomCursor />
         <TechFloaters />
         <Preloader />
+        <ProjectileFX />
 
         <ThemeProvider>
           <LanguageProvider>

@@ -48,7 +48,7 @@ export default function Spaceship() {
     if (isActive && !isTalking) {
       startFlight();
     } else if (!isActive && !isTalking) {
-      const initDelay = setTimeout(() => setIsActive(true), 2000);
+      const initDelay = setTimeout(() => setIsActive(true), 500);
       return () => clearTimeout(initDelay);
     }
     return () => {
@@ -69,7 +69,7 @@ export default function Spaceship() {
   };
 
   return (
-    <div className="absolute inset-0 pointer-events-none z-[5] overflow-hidden [perspective:1200px]">
+    <div className="absolute inset-0 pointer-events-none z-[50] overflow-hidden [perspective:1200px]">
       {/* Ship Container */}
       <div 
         className={`absolute transition-transform duration-100 ease-linear pointer-events-auto cursor-pointer group/ship [transform-style:preserve-3d]`}

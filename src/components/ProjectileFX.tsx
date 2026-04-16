@@ -18,14 +18,20 @@ export default function ProjectileFX() {
   }, []);
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[2] overflow-hidden [perspective:1200px]">
+    <div className="fixed inset-0 pointer-events-none z-[40] overflow-hidden [perspective:1200px]">
       {/* 3D Spinning Cryo-Missile 01 */}
       <div className="absolute top-1/3 left-0 animate-bullet-slide [transform-style:preserve-3d]">
         <div className="relative flex items-center group/missile">
           
-          {/* Tip Bow Waves */}
-          <div className="absolute left-[90%] w-12 h-12 border-l-2 border-[#00fbff]/40 rounded-full [transform:rotateY(-45deg)_scaleX(0.5)] animate-ping opacity-40" />
-          
+          {/* HIGH-OUTPUT SONIC BREAK (Breaking Waves) */}
+          <div className="absolute left-[95%] flex items-center justify-center">
+            <div className="absolute w-12 h-12 border-l-[3px] border-[#00fbff] rounded-full [transform:rotateY(-45deg)_scaleX(0.3)] animate-ping opacity-70" />
+            <div className="absolute w-16 h-16 border-l-2 border-[#00fbff]/50 rounded-full [transform:rotateY(-45deg)_scaleX(0.4)] animate-ping opacity-40 delay-75" />
+            <div className="absolute w-20 h-20 border-l border-[#00fbff]/30 rounded-full [transform:rotateY(-45deg)_scaleX(0.5)] animate-ping opacity-20 delay-150" />
+            {/* Plasma Core at Tip */}
+            <div className="w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_20px_#fff,_0_0_40px_#00fbff] animate-pulse relative z-20" />
+          </div>
+
           {/* Rotating Fins (Aleticas) */}
           <div className="absolute right-0 w-8 h-12 flex flex-col justify-between items-center animate-fin-rotate">
             <div className="w-full h-4 bg-white/60 [clip-path:polygon(0%_40%,100%_0%,100%_100%)] shadow-[0_0_10px_white/20]" />
@@ -50,7 +56,13 @@ export default function ProjectileFX() {
       <div className="absolute top-2/3 right-0 animate-bullet-slide-reverse [transform-style:preserve-3d]">
         <div className="relative flex flex-row-reverse items-center">
           
-          <div className="absolute right-[90%] w-16 h-16 border-r-2 border-[#00fbff]/40 rounded-full [transform:rotateY(45deg)_scaleX(0.5)] animate-ping opacity-40 delay-300" />
+          {/* HIGH-OUTPUT SONIC BREAK */}
+          <div className="absolute right-[95%] flex items-center justify-center">
+            <div className="absolute w-14 h-14 border-r-[4px] border-[#00fbff] rounded-full [transform:rotateY(45deg)_scaleX(0.3)] animate-ping opacity-60" />
+            <div className="absolute w-20 h-20 border-r-2 border-[#00fbff]/40 rounded-full [transform:rotateY(45deg)_scaleX(0.4)] animate-ping opacity-30 delay-100" />
+            {/* Plasma Core at Tip */}
+            <div className="w-3 h-3 bg-white rounded-full shadow-[0_0_25px_#fff,_0_0_45px_#00fbff] animate-pulse relative z-20" />
+          </div>
           
           {/* Rotating Fins (Aleticas) */}
           <div className="absolute left-0 w-10 h-14 flex flex-col justify-between items-center animate-fin-rotate-reverse">
