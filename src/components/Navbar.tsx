@@ -47,23 +47,27 @@ export default function Navbar() {
       <nav className={`fixed w-full z-[60] transition-all duration-500 py-6 px-12 flex items-center justify-between ${scrolled ? "bg-bg-base/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
         }`}>
         {/* Logo */}
-        <a href="#inicio" className="text-xl font-display font-black tracking-tighter uppercase whitespace-nowrap text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
-          Grull Picture Web
+        <a href="#" className="flex items-center gap-2 group relative z-50">
+          <span className="text-white font-display font-black tracking-[0.3em] uppercase text-sm md:text-xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] animate-shimmer-text">
+            Grull Picture Web
+          </span>
         </a>
 
         {/* Action icons + Menu Toggle */}
         <div className="flex items-center gap-6">
-          <button
-            className="relative p-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] opacity-80 hover:opacity-100 transition-opacity"
-            onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
-          >
-            <ShoppingCart className="w-5 h-5" />
-            {cart.length > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center text-[10px] font-bold text-black bg-brand-primary rounded-full shadow-lg">
-                {cart.length}
-              </span>
-            )}
-          </button>
+          <div className="flex items-center gap-2 md:gap-4 relative z-50">
+            <button 
+              className="p-2 text-white hover:text-brand-primary transition-all duration-300 relative group animate-cart-interact animate-cart-vibe"
+              onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
+            >
+              <svg className="w-5 h-5 md:w-6 md:h-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <circle cx="9" cy="21" r="1" />
+                <circle cx="20" cy="21" r="1" />
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+              </svg>
+              <span className="absolute -top-1 -right-1 w-2 h-2 md:w-3 md:h-3 bg-brand-primary rounded-full animate-pulse shadow-[0_0_10px_hsla(var(--brand-primary)/0.8)]"></span>
+            </button>
+          </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
@@ -109,7 +113,7 @@ export default function Navbar() {
               <button
                 key={l}
                 onClick={() => handleLangChange(l)}
-                className={`text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 ${lang === l ? "text-brand-primary" : "text-white/20 hover:text-white"
+                className={`text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 hover-jump ${lang === l ? "text-brand-primary" : "text-white/20 hover:text-white"
                   }`}
               >
                 {l.toUpperCase()}
@@ -130,7 +134,7 @@ export default function Navbar() {
                 <div className="inline-block px-4 py-1.5 border border-brand-primary/20 text-[10px] uppercase font-black tracking-[0.4em] text-brand-primary mb-6">
                   Status: {t.menu.status}
                 </div>
-                <h4 className="text-white font-display font-bold text-2xl mb-2 italic">{t.menu.title}</h4>
+                <h4 className="text-white font-display font-bold text-2xl mb-2 italic animate-reveal-up">{t.menu.title}</h4>
                 <p className="text-white/40 text-xs font-medium uppercase tracking-widest">{t.menu.subtitle}</p>
               </div>
   
@@ -148,7 +152,7 @@ export default function Navbar() {
                 </a>
   
                 <div className="flex gap-12 group pb-12 lg:pb-0">
-                  <a href="https://www.instagram.com/grullpixel/" target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-brand-primary hover:scale-125 transition-all duration-500">
+                  <a href="https://www.instagram.com/grullpixel/" target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-brand-primary hover:scale-125 transition-all duration-500 hover-jump">
                     <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                       <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                       <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />

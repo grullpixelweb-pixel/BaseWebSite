@@ -30,17 +30,17 @@ export default function Footer() {
               {t.footer.text}
             </p>
             <div className="flex gap-4">
-               <a href="https://wa.me/5511981718899" target="_blank" className="p-3 rounded-xl glass hover:bg-white/10 transition-all text-brand-primary">
+               <a href="https://wa.me/5511981718899" target="_blank" className="p-3 rounded-xl glass hover:bg-white/10 transition-all text-brand-primary hover-jump">
                  <MessageCircle className="w-6 h-6" />
                </a>
-               <a href="https://instagram.com/grullpixelweb" target="_blank" className="p-3 rounded-xl glass hover:bg-white/10 transition-all text-brand-secondary">
+               <a href="https://instagram.com/grullpixelweb" target="_blank" className="p-3 rounded-xl glass hover:bg-white/10 transition-all text-brand-secondary hover-jump">
                  <svg className="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
                  </svg>
                </a>
-               <a href="#" className="p-3 rounded-xl glass hover:bg-white/10 transition-all text-brand-accent">
+               <a href="#" className="p-3 rounded-xl glass hover:bg-white/10 transition-all text-brand-accent hover-jump">
                  <Globe className="w-6 h-6" />
                </a>
             </div>

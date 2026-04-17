@@ -33,7 +33,7 @@ export default function Hero() {
             Landing Pages & Branding
           </div>
           
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display mb-12 leading-[1.1] tracking-tighter text-white font-black italic drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)]">
+          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display mb-12 leading-[1.1] tracking-tighter text-white font-black italic drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] animate-reveal-up">
             {t.hero.title2}
           </h1>
 
