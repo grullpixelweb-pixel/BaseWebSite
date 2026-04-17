@@ -101,6 +101,11 @@ export const translations = {
       terms: "Termos",
       privacy: "Privacidade",
     },
+    menu: {
+      status: "Digital_Core_Online",
+      title: "Pronto para a transformação?",
+      subtitle: "Inicie sua lenda hoje",
+    },
     spaceship: "Olá, sou Grull",
   },
   es: {
@@ -205,6 +210,11 @@ export const translations = {
       terms: "Términos",
       privacy: "Privacidad",
     },
+    menu: {
+      status: "Digital_Core_Online",
+      title: "¿Listo para la transformación?",
+      subtitle: "Inicia tu leyenda hoy",
+    },
     spaceship: "Hola, soy Grull",
   },
   en: {
@@ -308,6 +318,11 @@ export const translations = {
       rights: "All rights reserved.",
       terms: "Terms",
       privacy: "Privacy",
+    },
+    menu: {
+      status: "Digital_Core_Online",
+      title: "Ready for conversion?",
+      subtitle: "Start your legend today",
     },
     spaceship: "Hi, I'm Grull",
   },

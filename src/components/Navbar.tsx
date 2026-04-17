@@ -80,67 +80,75 @@ export default function Navbar() {
       </nav>
 
       {/* Full-screen Menu Overlay */}
-      <div className={`fixed inset-0 z-[55] flex flex-col md:flex-row transition-all duration-700 ease-in-out ${isOpen ? "translate-y-0" : "-translate-y-full"
+      <div className={`fixed inset-0 z-[55] flex flex-col lg:flex-row transition-all duration-700 cubic-bezier(0.85, 0, 0.15, 1) ${isOpen ? "translate-y-0" : "-translate-y-full"
         }`}>
         {/* Left Side: Navigation */}
-        <div className="w-full md:w-1/2 h-full bg-black p-12 md:p-24 flex flex-col justify-between relative overflow-hidden border-b md:border-b-0 md:border-r border-brand-primary/10">
+        <div className="w-full lg:w-[60%] h-full bg-black p-12 lg:p-32 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-brand-primary/10">
           <div className="absolute inset-0 motherboard-grid opacity-10"></div>
 
-          <div className="relative z-10 pt-16 md:pt-24 space-y-2 md:space-y-8">
+          <div className="relative z-10 pt-20 lg:pt-0 lg:h-full lg:flex lg:flex-col lg:justify-center space-y-4 lg:space-y-6">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                onClick={(e) => {
-                  setIsOpen(false);
-                }}
-                className="group flex items-baseline gap-4 md:gap-8 text-3xl md:text-8xl font-display font-black hover:translate-x-2 md:hover:translate-x-4 transition-all duration-500 text-white/40 hover:text-white"
+                onClick={() => setIsOpen(false)}
+                className="group flex items-baseline gap-4 lg:gap-8 text-4xl md:text-5xl lg:text-7xl font-display font-black hover:translate-x-4 transition-all duration-700 text-white/20 hover:text-white"
               >
-                <span className="text-[10px] md:text-base font-sans font-black tracking-widest text-brand-primary opacity-40 group-hover:opacity-100">{link.num}</span>
-                {link.label}
+                <span className="text-[10px] lg:text-xs font-sans font-black tracking-[0.4em] text-brand-primary/40 group-hover:text-brand-primary transition-colors">{link.num}/</span>
+                <span className="relative">
+                   {link.label}
+                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-brand-primary group-hover:w-full transition-all duration-700 delay-100" />
+                </span>
               </a>
             ))}
           </div>
 
-          <div className="relative z-10 flex items-center gap-6 py-6 md:py-0 border-t border-white/5 md:border-t-0">
+          <div className="relative z-10 flex items-center gap-6 py-8 border-t border-white/5 lg:border-t-0">
             {(["pt", "es", "en"] as Language[]).map((l) => (
               <button
                 key={l}
                 onClick={() => handleLangChange(l)}
-                className={`text-[10px] md:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 ${lang === l ? "text-brand-primary drop-shadow-[0_0_8px_hsla(var(--brand-primary)/0.5)]" : "text-white/30 hover:text-white"
+                className={`text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 ${lang === l ? "text-brand-primary" : "text-white/20 hover:text-white"
                   }`}
               >
-                {l === "pt" ? "PT" : l === "es" ? "ES" : "EN"}
+                {l.toUpperCase()}
               </button>
             ))}
           </div>
         </div>
 
         {/* Right Side: Contact / CTA */}
-        <div className="w-full md:w-1/2 h-full bg-black p-8 md:p-24 flex flex-col justify-center items-center text-center relative overflow-hidden border-t md:border-t-0 border-white/5">
-          <div className="absolute inset-0 circuit-pattern opacity-[0.03]"></div>
+        <div className="w-full lg:w-[40%] h-full bg-[#050505] p-12 lg:p-24 flex flex-col justify-center items-center text-center relative overflow-hidden border-t lg:border-t-0 border-white/5">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(var(--brand-primary)/0.05),transparent_70%)]"></div>
+          
+          {/* Decorative core element for menu */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-primary/5 rounded-full blur-[100px] animate-pulse"></div>
 
-          <div className="relative z-10 w-full max-w-md">
-            <div className="mb-2 md:mb-4 inline-block px-3 py-1 border border-brand-primary/20 text-[8px] md:text-[10px] uppercase font-black tracking-[0.4em] text-brand-primary">
-              Status: Available
+          <div className="relative z-10 w-full max-w-sm">
+            <div className="mb-12">
+               <div className="inline-block px-4 py-1.5 border border-brand-primary/20 text-[10px] uppercase font-black tracking-[0.4em] text-brand-primary mb-6">
+                 Status: {t.menu.status}
+               </div>
+               <h4 className="text-white font-display font-bold text-2xl mb-2 italic">{t.menu.title}</h4>
+               <p className="text-white/40 text-xs font-medium uppercase tracking-widest">{t.menu.subtitle}</p>
             </div>
 
-            <div className="flex flex-col items-center gap-6 md:gap-12 mt-6 md:mt-12">
+            <div className="flex flex-col items-center gap-12">
               <a
                 href="https://wa.me/5511981718899"
-                className="group relative flex items-center justify-between gap-4 md:gap-8 p-1 border border-brand-primary/30 rounded-full pl-6 md:pl-10 pr-1 hover:border-brand-primary hover:bg-brand-primary/5 transition-all duration-500"
+                className="group relative flex items-center justify-between gap-8 p-1.5 border border-white/10 rounded-full pl-10 pr-1.5 hover:border-brand-primary/50 hover:bg-white/5 transition-all duration-500 w-full"
               >
-                <span className="text-white font-black uppercase tracking-widest text-[10px] md:text-sm">Fale com a Grull</span>
-                <div className="w-12 h-12 md:w-16 md:h-16 bg-brand-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-                  <svg className="w-5 h-5 md:w-7 md:h-7 text-black stroke-[3]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <span className="text-white font-black uppercase tracking-[0.2em] text-xs">Fale com a Grull</span>
+                <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center group-hover:rotate-12 group-hover:scale-105 transition-all duration-500 shadow-[0_0_30px_hsla(var(--brand-primary)/0.3)]">
+                  <svg className="w-7 h-7 text-black stroke-[2.5]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round">
                     <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
                   </svg>
                 </div>
               </a>
 
-              <div className="flex gap-8 opacity-30 hover:opacity-100 transition-opacity">
-                <a href="https://www.instagram.com/grullpixel/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-secondary transition-colors">
-                  <svg className="w-6 h-6 md:w-10 md:h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <div className="flex gap-12 group">
+                <a href="https://www.instagram.com/grullpixel/" target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-brand-primary hover:scale-125 transition-all duration-500">
+                  <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
                     <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
                     <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
                     <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
@@ -150,11 +158,10 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Decorative LCD corner */}
-          <div className="absolute bottom-10 right-10 opacity-10">
-            <div className="text-[10px] font-mono text-brand-primary text-right">
+          <div className="absolute bottom-12 right-12 opacity-20">
+            <div className="text-[9px] font-mono text-brand-primary text-right tracking-tighter">
               GRULL_PICTURE_WEB_v2.0<br />
-              COORD: 23.5505° S, 46.6333° W
+              <span className="opacity-50">NODE: ALPHA_STATION</span>
             </div>
           </div>
         </div>
