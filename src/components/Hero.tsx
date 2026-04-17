@@ -35,7 +35,7 @@ export default function Hero() {
           
           <div className="bg-white p-6 sm:p-8 md:p-16 neo-border shadow-[8px_8px_0px_black] md:shadow-[16px_16px_0px_black] transform rotate-1 mb-10 md:mb-12 max-w-full">
             <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-display font-black leading-[0.85] md:leading-[0.8] text-black uppercase tracking-tighter break-words">
-                {t.hero.title2}<span className="text-brand-secondary">.</span>
+                {t.hero.title2}<span className="text-brand-secondary animate-neo-blink ml-2 inline-block">_</span>
             </h1>
           </div>
 

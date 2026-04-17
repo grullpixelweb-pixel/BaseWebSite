@@ -33,9 +33,7 @@ export default function RootLayout({
   return (
     <html lang="pt" className="dark scroll-smooth" suppressHydrationWarning>
       <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col antialiased relative`} suppressHydrationWarning>
-        {/* Design Layers */}
-        <div className="fixed inset-0 pointer-events-none z-[0] motherboard-grid opacity-10"></div>
-        <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay noise-bg"></div>
+        {/* Design Layers Removed for Clarity */}
 
         <ThemeProvider>
           <LanguageProvider>

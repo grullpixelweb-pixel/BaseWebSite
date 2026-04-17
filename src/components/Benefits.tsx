@@ -8,10 +8,10 @@ export default function Benefits() {
   const { t } = useLanguage();
 
   const icons = [
-    <Zap key="zap" size={48} strokeWidth={3} />,
-    <Target key="target" size={48} strokeWidth={3} />,
-    <Code key="code" size={48} strokeWidth={3} />,
-    <TrendingUp key="trend" size={48} strokeWidth={3} />
+    <div key="zap" className="animate-neo-shake"><Zap size={48} strokeWidth={3} /></div>,
+    <div key="target" className="animate-neo-spin"><Target size={48} strokeWidth={3} /></div>,
+    <div key="code"><Code size={48} strokeWidth={3} className="animate-neo-pulse" /></div>,
+    <div key="trend" className="animate-neo-bounce"><TrendingUp size={48} strokeWidth={3} /></div>
   ];
 
   return (
