@@ -24,7 +24,7 @@ export default function Benefits() {
         <header className="mb-20 grid lg:grid-cols-2 gap-8 items-end">
             <div>
                 <div className="bg-brand-secondary text-black px-4 py-1 mb-6 inline-block neo-border font-mono text-xs font-bold uppercase">
-                    Core Advantages // 2024
+                    Core Advantages // 2026
                 </div>
                 <h2 className="text-4xl sm:text-6xl md:text-8xl font-display font-black text-black dark:text-white leading-none uppercase italic">
                     {t.benefits.sectionTitle}

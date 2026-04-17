@@ -41,7 +41,7 @@ export default function Preloader() {
         </div>
 
         <div className="mt-8 bg-white px-4 py-1 neo-border font-mono text-xs font-bold uppercase tracking-widest text-black">
-            SYSTEM_INITIALIZATION_2024
+            SYSTEM_INITIALIZATION_2026
         </div>
       </div>
     </div>

@@ -23,6 +23,9 @@ export const metadata: Metadata = {
   },
 };
 
+import CustomCursor from "../components/CustomCursor";
+import Preloader from "../components/Preloader";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -30,7 +33,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt" className="dark scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col antialiased relative`}>
+      <body className={`${inter.variable} ${outfit.variable} font-sans min-h-screen flex flex-col antialiased relative`} suppressHydrationWarning>
         {/* Design Layers */}
         <div className="fixed inset-0 pointer-events-none z-[0] motherboard-grid opacity-10"></div>
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay noise-bg"></div>
@@ -38,6 +41,8 @@ export default function RootLayout({
         <ThemeProvider>
           <LanguageProvider>
             <CartProvider>
+              <Preloader />
+              <CustomCursor />
               <div className="relative z-10 flex flex-col min-h-screen">
                 {children}
               </div>
