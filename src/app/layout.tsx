@@ -23,7 +23,6 @@ export const metadata: Metadata = {
   },
 };
 
-import CustomCursor from "../components/CustomCursor";
 import Preloader from "../components/Preloader";
 
 export default function RootLayout({
@@ -42,7 +41,6 @@ export default function RootLayout({
           <LanguageProvider>
             <CartProvider>
               <Preloader />
-              <CustomCursor />
               <div className="relative z-10 flex flex-col min-h-screen">
                 {children}
               </div>
