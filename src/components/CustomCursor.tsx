@@ -54,13 +54,13 @@ export default function CustomCursor() {
     <>
       <div 
         ref={dotRef}
-        className="fixed top-0 left-0 w-2 h-2 bg-brand-primary rounded-full pointer-events-none z-[10001] shadow-[0_0_15px_hsl(var(--brand-primary))]"
+        className="fixed top-0 left-0 w-3 h-3 bg-brand-primary neo-border pointer-events-none z-[10001] shadow-[4px_4px_0_black]"
         style={{ willChange: 'transform' }}
       />
       <div 
         ref={ringRef}
-        className={`fixed top-0 left-0 border border-brand-primary/40 rounded-full pointer-events-none z-[10000] transition-[width,height,background-color] duration-500 ease-out flex items-center justify-center ${
-          isPointer ? "w-16 h-16 bg-brand-primary/10" : "w-8 h-8 bg-transparent"
+        className={`fixed top-0 left-0 border-2 border-black dark:border-white pointer-events-none z-[10000] transition-all duration-300 ease-out flex items-center justify-center ${
+          isPointer ? "w-16 h-16 bg-brand-secondary shadow-[4px_4px_0px_black] rotate-45" : "w-10 h-10 bg-transparent rotate-0"
         }`}
         style={{ willChange: 'transform' }}
       />

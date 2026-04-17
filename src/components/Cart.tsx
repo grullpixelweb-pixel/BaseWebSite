@@ -37,12 +37,11 @@ export default function Cart() {
   return (
     <div
       id="cart-sidebar"
-      className="fixed inset-y-0 right-0 z-[60] w-full md:w-[450px] h-full transform translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] glass shadow-2xl flex flex-col border-l"
-      style={{ borderColor: "hsla(var(--text-primary) / 0.1)" }}
+      className="fixed inset-y-0 right-0 z-[60] w-full md:w-[450px] h-full transform translate-x-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] bg-white dark:bg-black flex flex-col border-l-8 border-black shadow-[0_0_0_100vmax_rgba(0,0,0,0.5)]"
     >
-      <div className="flex items-center justify-between p-8 border-b" style={{ borderColor: "hsla(var(--text-primary) / 0.05)" }}>
-        <h2 className="text-2xl font-display font-bold flex items-center gap-3" style={{ color: "hsl(var(--text-primary))" }}>
-          <ShoppingCart className="w-6 h-6 text-brand-primary" />
+      <div className="flex items-center justify-between p-8 border-b-4 border-black bg-brand-primary">
+        <h2 className="text-3xl font-display font-black flex items-center gap-3 text-black">
+          <ShoppingCart className="w-8 h-8" strokeWidth={3} />
           {t.cart.title}
         </h2>
         <button
@@ -87,11 +86,11 @@ export default function Cart() {
         )}
       </div>
 
-      <div className="p-8 border-t space-y-8" style={{ borderColor: "hsla(var(--text-primary) / 0.05)" }}>
+      <div className="p-8 border-t-4 border-black bg-zinc-50 dark:bg-zinc-900 space-y-8">
         <div className="flex justify-between items-end">
-          <span className="text-sm font-black uppercase tracking-[0.2em] opacity-40">{t.cart.totalBg}</span>
+          <span className="text-xs font-mono font-black uppercase tracking-widest text-black/40">TOTAL_ALLOCATION</span>
           <div className="text-right">
-            <span className="block text-4xl font-display font-black text-gradient">
+            <span className="block text-4xl font-display font-black text-black dark:text-white uppercase italic">
               R$ {formatPrice(total)}
             </span>
           </div>
@@ -100,14 +99,13 @@ export default function Cart() {
         <button
           onClick={handleCheckout}
           disabled={cart.length === 0}
-          className={`w-full py-5 rounded-2xl flex items-center justify-center gap-3 font-black text-sm uppercase tracking-widest transition-all duration-300 shadow-xl ${
+          className={`w-full py-6 flex items-center justify-center gap-3 font-black text-xl uppercase tracking-tighter transition-all neo-border neo-shadow-brand active:translate-y-1 active:translate-x-1 active:shadow-none ${
             cart.length === 0
-              ? "bg-white/5 text-muted cursor-not-allowed border border-white/5"
-              : "bg-[hsl(var(--brand-primary))] text-white hover:scale-[1.02] active:scale-[0.98] shadow-brand-primary/20"
+              ? "bg-zinc-100 text-zinc-300 border-zinc-200 cursor-not-allowed"
+              : "bg-black text-white"
           }`}
-          style={cart.length > 0 ? { backgroundColor: "hsl(var(--brand-primary))" } : {}}
         >
-          <Send className="w-5 h-5" />
+          <Send className="w-6 h-6" strokeWidth={3} />
           {t.cart.checkout}
         </button>
       </div>

@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { ArrowRight } from "lucide-react";
 
 export default function Hero() {
   const { t } = useLanguage();
@@ -12,51 +13,54 @@ export default function Hero() {
   }, []);
 
   return (
-    <div id="inicio" className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Artistic Mythical Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-bg-base via-bg-base/40 to-transparent z-10" />
-        <div className="absolute inset-0 animate-slow-float">
-          <img 
-            src="/hero-art.png" 
-            alt="Mythical Crane Landscape" 
-            className="w-full h-full object-cover object-bottom scale-110 animate-subtle-zoom"
-          />
-        </div>
-        {/* Atmosphere overlays for sensory depth */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,hsla(var(--brand-primary)/0.1),transparent_70%)] z-[15]" />
-      </div>
+    <section id="inicio" className="relative min-h-[90vh] md:min-h-screen flex items-center pt-24 md:pt-32 bg-brand-primary overflow-hidden">
+      {/* Background Decorative Pattern */}
+      <div className="absolute inset-0 opacity-20" style={{
+        backgroundImage: `radial-gradient(black 1px, transparent 0)`,
+        backgroundSize: '24px 24px'
+      }} />
+      
+      {/* Floating Elements from Image Style */}
+      <div className="absolute top-10 right-[-10%] w-[40%] h-[30%] bg-brand-secondary neo-border rotate-12 animate-slow-float opacity-30 pointer-events-none" />
+      <div className="absolute bottom-10 left-[-10%] w-[30%] h-[20%] bg-white neo-border -rotate-12 animate-float opacity-30 pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full grid lg:grid-cols-2 items-center gap-12">
-        <div className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
-          <div className="inline-block px-4 py-1.5 mb-8 text-[11px] font-black uppercase tracking-[0.4em] text-white bg-black/40 backdrop-blur-sm border border-white/10 rounded">
-            Landing Pages & Branding
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 w-full grid lg:grid-cols-1 relative z-10">
+        <div className={`transition-all duration-1000 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"}`}>
+          
+          <div className="bg-black text-white px-4 md:px-6 py-2 mb-6 md:mb-8 inline-block shadow-[4px_4px_0px_white] transform -rotate-1 max-w-full">
+            <span className="font-mono text-[10px] sm:text-xs md:text-lg font-bold tracking-tighter sm:tracking-widest uppercase">
+               3 SIDED CUBE IS AN APP DEVELOPMENT AND DIGITAL PRODUCT COMPANY
+            </span>
           </div>
           
-          <h1 className="text-5xl sm:text-7xl lg:text-8xl font-display mb-12 leading-[1.1] tracking-tighter text-white font-black italic drop-shadow-[0_10px_30px_rgba(0,0,0,0.5)] animate-reveal-up">
-            {t.hero.title2}
-          </h1>
+          <div className="bg-white p-6 sm:p-8 md:p-16 neo-border shadow-[8px_8px_0px_black] md:shadow-[16px_16px_0px_black] transform rotate-1 mb-10 md:mb-12 max-w-full">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl lg:text-[10rem] font-display font-black leading-[0.85] md:leading-[0.8] text-black uppercase tracking-tighter break-words">
+                {t.hero.title2}<span className="text-brand-secondary">.</span>
+            </h1>
+          </div>
 
-          <div className="flex flex-col sm:flex-row gap-6">
+          <div className="flex flex-col sm:flex-row gap-4 sm:gap-8">
             <a
               href="#servicios"
-              className="px-12 py-5 bg-brand-primary text-black font-black uppercase tracking-[0.2em] text-[10px] rounded-full transition-all duration-500 hover:scale-105 hover:bg-brand-accent active:scale-95 text-center shadow-[0_15px_30px_-10px_hsla(var(--brand-primary)/0.5)]"
+              className="group flex items-center justify-between gap-6 sm:gap-12 bg-black text-white px-6 sm:px-10 py-4 sm:py-6 neo-border neo-shadow-brand active:translate-y-1 active:translate-x-1 active:shadow-none transition-all"
             >
-              {t.hero.btnPlans}
+              <span className="font-display text-xl sm:text-2xl font-black uppercase tracking-tighter italic">
+                {t.hero.btnPlans}
+              </span>
+              <div className="bg-white text-black p-1.5 sm:p-2 group-hover:rotate-45 transition-transform">
+                <ArrowRight className="w-6 h-6 sm:w-8 sm:h-8" strokeWidth={3} />
+              </div>
             </a>
             
             <a
               href="#contacto"
-              className="px-12 py-5 text-[10px] font-black uppercase tracking-[0.2em] rounded-full transition-all duration-500 glass hover:bg-white/10 active:scale-95 border border-white/10 text-white text-center"
+              className="flex items-center justify-center px-6 sm:px-10 py-4 sm:py-6 bg-white text-black font-black uppercase tracking-tighter text-lg sm:text-xl neo-border shadow-[6px_6px_0px_black] md:shadow-[8px_8px_0px_black] hover:bg-brand-secondary transition-colors"
             >
               {t.hero.btnContact}
             </a>
           </div>
         </div>
-
-        {/* Framing space */}
-        <div className="hidden lg:block h-32" />
       </div>
-    </div>
+    </section>
   );
 }

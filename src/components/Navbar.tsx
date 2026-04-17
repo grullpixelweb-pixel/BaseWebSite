@@ -44,41 +44,32 @@ export default function Navbar() {
 
   return (
     <>
-      <nav className={`fixed w-full z-[60] transition-all duration-500 py-6 px-12 flex items-center justify-between ${scrolled ? "bg-bg-base/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
-        }`}>
+      <nav className={`fixed w-full z-[60] transition-all duration-500 py-4 px-6 md:px-12 flex items-center justify-between border-b-4 border-black bg-white dark:bg-black dark:border-white ${scrolled ? "py-3 shadow-[0_4px_0px_#39FF14]" : ""}`}>
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group relative z-50">
-          <span className="text-white font-display font-black tracking-[0.3em] uppercase text-sm md:text-xl drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)] animate-shimmer-text">
-            Grull Picture Web
+          <span className="text-black dark:text-white font-display font-black tracking-tighter uppercase text-xl md:text-3xl">
+            GRULL<span className="text-brand-secondary">PIXEL</span>
           </span>
         </a>
 
         {/* Action icons + Menu Toggle */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 md:gap-4 relative z-50">
             <button 
-              className="p-2 text-white hover:text-brand-primary transition-all duration-300 relative group animate-cart-interact animate-cart-vibe"
+              className="px-3 md:px-6 py-2 bg-brand-primary text-black font-black uppercase text-[10px] md:text-xs border-2 border-black shadow-[4px_4px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
               onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
             >
-              <svg className="w-5 h-5 md:w-6 md:h-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                <circle cx="9" cy="21" r="1" />
-                <circle cx="20" cy="21" r="1" />
-                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
-              </svg>
-              <span className="absolute -top-1 -right-1 w-2 h-2 md:w-3 md:h-3 bg-brand-primary rounded-full animate-pulse shadow-[0_0_10px_hsla(var(--brand-primary)/0.8)]"></span>
+              SHOP [{cart.length}]
             </button>
           </div>
 
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`w-14 h-14 rounded-full glass border flex flex-col items-center justify-center gap-1.5 group transition-all duration-500 hover:scale-110 z-[100] relative ${isOpen
-              ? "border-brand-secondary shadow-[0_0_20px_hsla(var(--brand-secondary)/0.5)]"
-              : "border-white/20 hover:border-white/60 shadow-[0_0_15px_rgba(0,0,0,0.3)]"
-              }`}
+            className={`w-12 h-12 border-2 border-black dark:border-white flex flex-col items-center justify-center gap-1.5 transition-all z-[100] relative bg-brand-secondary shadow-[4px_4px_0px_black] hover:rotate-2`}
           >
-            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary rotate-45 translate-y-[7px]" : "bg-white"}`} />
-            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-transparent opacity-0" : "bg-white"}`} />
-            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary -rotate-45 -translate-y-[7px]" : "bg-white"}`} />
+            <div className={`w-6 h-1 transition-all duration-300 ${isOpen ? "bg-black rotate-45 translate-y-[10px]" : "bg-black"}`} />
+            <div className={`w-6 h-1 transition-all duration-300 ${isOpen ? "bg-transparent opacity-0" : "bg-black"}`} />
+            <div className={`w-6 h-1 transition-all duration-300 ${isOpen ? "bg-black -rotate-45 -translate-y-[10px]" : "bg-black"}`} />
           </button>
         </div>
       </nav>
