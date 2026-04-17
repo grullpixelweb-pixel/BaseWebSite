@@ -47,19 +47,19 @@ export default function Navbar() {
       <nav className={`fixed w-full z-[60] transition-all duration-500 py-6 px-12 flex items-center justify-between ${scrolled ? "bg-bg-base/80 backdrop-blur-md border-b border-white/5" : "bg-transparent"
         }`}>
         {/* Logo */}
-        <a href="#inicio" className="text-xl font-display font-black tracking-tighter uppercase whitespace-nowrap">
+        <a href="#inicio" className="text-xl font-display font-black tracking-tighter uppercase whitespace-nowrap text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.5)]">
           Grull Picture Web
         </a>
 
         {/* Action icons + Menu Toggle */}
         <div className="flex items-center gap-6">
           <button
-            className="relative p-2 opacity-50 hover:opacity-100 transition-opacity"
+            className="relative p-2 text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.5)] opacity-80 hover:opacity-100 transition-opacity"
             onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
           >
             <ShoppingCart className="w-5 h-5" />
             {cart.length > 0 && (
-              <span className="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center text-[10px] font-bold text-black bg-brand-primary rounded-full">
+              <span className="absolute -top-1 -right-1 w-4 h-4 flex items-center justify-center text-[10px] font-bold text-black bg-brand-primary rounded-full shadow-lg">
                 {cart.length}
               </span>
             )}
@@ -69,12 +69,12 @@ export default function Navbar() {
             onClick={() => setIsOpen(!isOpen)}
             className={`w-14 h-14 rounded-full glass border flex flex-col items-center justify-center gap-1.5 group transition-all duration-500 hover:scale-110 z-[100] relative ${isOpen
               ? "border-brand-secondary shadow-[0_0_20px_hsla(var(--brand-secondary)/0.5)]"
-              : "border-brand-primary/40 hover:border-brand-primary shadow-[0_0_15px_hsla(var(--brand-primary)/0.3)]"
+              : "border-white/20 hover:border-white/60 shadow-[0_0_15px_rgba(0,0,0,0.3)]"
               }`}
           >
-            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary rotate-45 translate-y-[7px]" : "bg-brand-primary"}`} />
-            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-transparent opacity-0" : "bg-brand-primary"}`} />
-            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary -rotate-45 -translate-y-[7px]" : "bg-brand-primary"}`} />
+            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary rotate-45 translate-y-[7px]" : "bg-white"}`} />
+            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-transparent opacity-0" : "bg-white"}`} />
+            <div className={`w-6 h-0.5 transition-all duration-300 ${isOpen ? "bg-brand-secondary -rotate-45 -translate-y-[7px]" : "bg-white"}`} />
           </button>
         </div>
       </nav>

@@ -19,47 +19,43 @@
 }
 
 html.dark {
-  --brand-primary: 74 100% 60%;
-  /* Neon Acid Green (Like the image) */
-  --brand-secondary: 320 100% 60%;
-  /* Electric Magenta / Pink */
-  --brand-accent: 180 100% 50%;
-  /* Tech Cyan */
+  --brand-primary: 25 80% 60%;
+  --brand-secondary: 150 40% 45%;
+  --brand-accent: 45 100% 75%;
 
-  --bg-base: 0 0% 0%;
-  /* Pure Black for maximum LCD glow */
-  --bg-section: 0 0% 2%;
-  --bg-surface: 0 0% 4%;
-  --bg-card: 0 0% 6%;
+  --bg-base: 25 10% 4%;
+  --bg-section: 25 10% 6%;
+  --bg-surface: 25 15% 8%;
+  --bg-card: 25 15% 10%;
 
-  --text-primary: 0 0% 100%;
-  --text-secondary: 74 20% 80%;
-  --text-muted: 74 10% 50%;
+  --text-primary: 30 20% 98%;
+  --text-secondary: 30 10% 80%;
+  --text-muted: 30 10% 50%;
 
-  --border-soft: 74 100% 60% / 0.1;
-  --border-glow: 74 100% 60% / 0.3;
+  --border-soft: 25 80% 60% / 0.1;
+  --border-glow: 25 80% 60% / 0.2;
 
-  --selection-bg: 74 100% 60% / 0.4;
+  --selection-bg: 25 80% 60% / 0.3;
 }
 
 html.light {
-  --brand-primary: 230 90% 60%;
-  --brand-secondary: 260 85% 55%;
-  --brand-accent: 320 80% 50%;
+  --brand-primary: 25 80% 50%;
+  --brand-secondary: 150 50% 30%;
+  --brand-accent: 45 90% 60%;
 
-  --bg-base: 220 100% 98%;
-  --bg-section: 220 100% 96%;
-  --bg-surface: 0 0% 100% / 0.8;
+  --bg-base: 30 30% 96%;
+  --bg-section: 30 30% 94%;
+  --bg-surface: 0 0% 100% / 0.9;
   --bg-card: 0 0% 100%;
 
-  --text-primary: 224 71% 10%;
-  --text-secondary: 224 30% 30%;
-  --text-muted: 224 20% 50%;
+  --text-primary: 25 20% 10%;
+  --text-secondary: 25 15% 30%;
+  --text-muted: 25 10% 50%;
 
-  --border-soft: 224 71% 90%;
-  --border-glow: 230 90% 60% / 0.05;
+  --border-soft: 25 80% 50% / 0.1;
+  --border-glow: 25 80% 50% / 0.05;
 
-  --selection-bg: 230 90% 60% / 0.2;
+  --selection-bg: 25 80% 50% / 0.15;
 }
 
 /* ── Base Styles ────────────────────────────────────────────────── */
@@ -80,7 +76,6 @@ h4,
   font-family: var(--font-display);
   font-weight: 700;
   letter-spacing: -0.04em;
-  /* Tighter for Peak Studio look */
 }
 
 ::selection {
@@ -147,13 +142,12 @@ h4,
   border-radius: 10px;
 }
 
-/* ── Attention-Grabbing Animations ───────────────────────────────── */
+/* ── Animations ──────────────────────────────────────────────────── */
 @keyframes reveal-up {
   from {
     opacity: 0;
-    transform: translateY(40px);
+    transform: translateY(20px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -161,67 +155,57 @@ h4,
 }
 
 .reveal-up {
-  animation: reveal-up 1s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: reveal-up 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
-@keyframes orbit {
-  from {
-    transform: rotate(0deg) translateX(20px) rotate(0deg);
-  }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
 
-  to {
-    transform: rotate(360deg) translateX(20px) rotate(-360deg);
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+@keyframes slow-float {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33% { transform: translateY(-12px) translateX(6px); }
+  66% { transform: translateY(6px) translateX(-6px); }
+}
+
+.animate-slow-float {
+  animation: slow-float 25s ease-in-out infinite;
+}
+
+@keyframes subtle-zoom {
+  0%, 100% { transform: scale(1.1); }
+  50% { transform: scale(1.18); }
+}
+
+.animate-subtle-zoom {
+  animation: subtle-zoom 45s ease-in-out infinite;
+}
+
+@keyframes morph {
+  0%, 100% {
+    border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
+  }
+  34% {
+    border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
+  }
+  67% {
+    border-radius: 30% 60% 60% 40% / 70% 60% 40% 30%;
   }
 }
 
-.animate-orbit {
-  animation: orbit 10s linear infinite;
+.animate-morph {
+  animation: morph 12s ease-in-out infinite;
 }
-
-  @keyframes flicker {
-    0%, 100% { opacity: 0.8; transform: scaleY(1); }
-    50% { opacity: 1; transform: scaleY(1.2); }
-  }
-
-  @keyframes hustle {
-    0% { background-position: 0 0; }
-    100% { background-position: 50px 50px; }
-  }
-
-  @keyframes fin-rotate {
-    0%, 100% { transform: translateY(0) scaleY(1) skewY(0deg); opacity: 0.8; }
-    25% { transform: translateY(-15px) scaleY(0.5) skewY(10deg); opacity: 0.4; }
-    50% { transform: translateY(0) scaleY(0.1) skewY(0deg); opacity: 0.2; }
-    75% { transform: translateY(15px) scaleY(0.5) skewY(-10deg); opacity: 0.4; }
-  }
-
-  @keyframes fin-rotate-reverse {
-    0%, 100% { transform: translateY(0) scaleY(1) skewY(0deg); opacity: 0.8; }
-    25% { transform: translateY(15px) scaleY(0.5) skewY(-10deg); opacity: 0.4; }
-    50% { transform: translateY(0) scaleY(0.1) skewY(0deg); opacity: 0.2; }
-    75% { transform: translateY(-15px) scaleY(0.5) skewY(10deg); opacity: 0.4; }
-  }
-
-  .animate-fin-rotate {
-    animation: fin-rotate 1s ease-in-out infinite;
-  }
-
-  .animate-fin-rotate-reverse {
-    animation: fin-rotate-reverse 1.2s ease-in-out infinite;
-  }
-
-  .animate-hustle {
-    animation: hustle 0.5s linear infinite;
-  }
-
-  .animate-flicker {
-    animation: flicker 0.1s ease-in-out infinite;
-  }
 
 /* Scroll reveal helper */
 .reveal-on-scroll {
   opacity: 0;
-  transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transition: all 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .reveal-on-scroll.is-visible {
@@ -230,224 +214,42 @@ h4,
 }
 
 .reveal-on-scroll.is-hidden {
-  transform: translateY(40px);
+  transform: translateY(20px);
+}
+@keyframes seed-grow {
+  0%, 100% { transform: scale(1) translateY(0); }
+  50% { transform: scale(1.05) translateY(-2px); }
 }
 
-/* ── Animations ──────────────────────────────────────────────────── */
-@keyframes loading-bar {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
+.animate-seed {
+  animation: seed-grow 4s ease-in-out infinite;
 }
 
-.animate-loading-bar {
-  animation: loading-bar 1.5s ease-in-out infinite;
+@keyframes eye-blink {
+  0%, 45%, 55%, 100% { transform: scaleY(1); }
+  50% { transform: scaleY(0.1); }
 }
 
-@keyframes float {
-
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-
-  50% {
-    transform: translateY(-10px);
-  }
+.animate-blink {
+  transform-origin: center;
+  animation: eye-blink 4s infinite;
 }
 
-.animate-float {
-  animation: float 6s ease-in-out infinite;
+@keyframes terminal-line {
+  0%, 100% { opacity: 0.3; transform: translateX(0); }
+  50% { opacity: 1; transform: translateX(2px); }
 }
 
-@keyframes morph {
+.animate-terminal-1 { animation: terminal-line 3s ease-in-out infinite; }
+.animate-terminal-2 { animation: terminal-line 3s ease-in-out infinite 0.5s; }
+.animate-terminal-3 { animation: terminal-line 3s ease-in-out infinite 1s; }
 
-  0%,
-  100% {
-    border-radius: 40% 60% 70% 30% / 40% 40% 60% 50%;
-  }
-
-  34% {
-    border-radius: 70% 30% 50% 50% / 30% 30% 70% 70%;
-  }
-
-  67% {
-    border-radius: 30% 60% 60% 40% / 70% 60% 40% 30%;
-  }
+@keyframes graph-rise {
+  0%, 100% { stroke-dashoffset: 20; opacity: 0.5; }
+  50% { stroke-dashoffset: 0; opacity: 1; }
 }
 
-.animate-morph {
-  animation: morph 8s ease-in-out infinite;
-}
-
-/* ── Spaceship Sonic Streak ──────────────────────────────────────── */
-@keyframes spaceship-streak {
-  0% {
-    transform: translateX(-150vw) translateY(20vh) skewX(30deg) scale(0.5);
-    opacity: 0;
-  }
-
-  10% {
-    opacity: 1;
-  }
-
-  90% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(150vw) translateY(-20vh) skewX(30deg) scale(0.5);
-    opacity: 0;
-  }
-}
-
-.animate-spaceship {
-  animation: spaceship-streak 3s cubic-bezier(0.1, 0, 0, 1) infinite;
-}
-
-@keyframes shockwave {
-  0% {
-    transform: scale(0.5);
-    opacity: 0.5;
-  }
-
-  100% {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
-
-.animate-shockwave {
-  animation: shockwave 1.5s ease-out infinite;
-}
-
-@keyframes spaceship-streak-v2 {
-  0% {
-    transform: translateX(-150vw) translateY(10vh) skewX(20deg) scale(0.4);
-    opacity: 0;
-  }
-
-  5% {
-    opacity: 1;
-  }
-
-  95% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateX(150vw) translateY(-10vh) skewX(20deg) scale(0.6);
-    opacity: 0;
-  }
-}
-
-.animate-spaceship-v2 {
-  animation: spaceship-streak-v2 4s cubic-bezier(0.1, 0, 0, 1) infinite;
-}
-
-/* ── Ultra Fast 3D Bullet Streak ────────────────────────────────── */
-@keyframes bullet-slide {
-  0% {
-    transform: translate(-100vw, 5vh) scale(0.5) rotateX(20deg);
-    opacity: 0;
-  }
-  20% { opacity: 1; }
-  50% {
-    transform: translate(50vw, 0) scale(1.4) rotateX(0deg);
-    opacity: 1;
-  }
-  80% { opacity: 1; }
-  100% {
-    transform: translate(150vw, -10vh) scale(0.5) rotateX(-20deg);
-    opacity: 0;
-  }
-}
-
-@keyframes bullet-slide-reverse {
-  0% {
-    transform: translate(100vw, 10vh) scale(0.5) rotateX(-20deg) rotateY(180deg);
-    opacity: 0;
-  }
-  20% { opacity: 1; }
-  50% {
-    transform: translate(-50vw, 0) scale(1.4) rotateX(0deg) rotateY(180deg);
-    opacity: 1;
-  }
-  80% { opacity: 1; }
-  100% {
-    transform: translate(-150vw, -5vh) scale(0.5) rotateX(20deg) rotateY(180deg);
-    opacity: 0;
-  }
-}
-
-.animate-bullet-slide {
-  animation: bullet-slide 3s cubic-bezier(0.1, 0, 0, 1) infinite;
-}
-
-.animate-bullet-slide-reverse {
-  animation: bullet-slide-reverse 4s cubic-bezier(0.1, 0, 0, 1) infinite;
-}
-
-/* ── SVG Animations (Moved from internal styled-jsx) ────────────── */
-@keyframes grow-path {
-  0% {
-    stroke-dashoffset: 100;
-  }
-
-  40%,
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes pop-leaf {
-
-  0%,
-  40% {
-    opacity: 0;
-    transform: scale(0);
-  }
-
-  50%,
-  100% {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-@keyframes cat-curl {
-  0% {
-    stroke-dashoffset: 200;
-    transform: rotate(0deg);
-  }
-
-  40% {
-    stroke-dashoffset: 0;
-    transform: rotate(10deg);
-  }
-
-  60% {
-    stroke-dashoffset: 0;
-    transform: rotate(-5deg);
-  }
-
-  100% {
-    stroke-dashoffset: 200;
-    transform: rotate(0deg);
-  }
-}
-
-@keyframes code-type {
-  0% {
-    width: 0;
-  }
-
-  50%,
-  100% {
-    width: 100%;
-  }
+.animate-graph {
+  stroke-dasharray: 20;
+  animation: graph-rise 5s ease-in-out infinite;
 }

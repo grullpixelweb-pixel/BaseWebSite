@@ -23,9 +23,9 @@ export default function Services() {
         {/* Header (Floating above the orbit) */}
         <div className="text-center mb-32">
           <div className="inline-block px-4 py-1 border border-brand-primary/30 text-[10px] uppercase font-black tracking-[0.4em] text-brand-primary mb-6">
-             Infrastructure_Orbit: Package_Distribution
+             Ecosistema_Mitológico: Sabores & Visiones
           </div>
-          <h2 className="text-4xl md:text-7xl font-display font-black text-white mb-6">
+          <h2 className="text-4xl md:text-7xl font-display font-black text-white mb-6 italic">
             {t.servicesConfig.title}
           </h2>
         </div>
@@ -34,10 +34,9 @@ export default function Services() {
         <div className="relative min-h-[800px] lg:h-[900px] w-full flex flex-col lg:flex-row items-center justify-center gap-12 lg:gap-0">
           
           {/* Central Server Core */}
-          <div className="relative z-20 w-32 h-32 md:w-56 md:h-56 rounded-full bg-black border-4 border-brand-secondary/40 flex items-center justify-center shadow-[0_0_60px_hsla(var(--brand-secondary)/0.2)] group hover:border-brand-secondary transition-all duration-700 lg:absolute">
-             <div className="absolute inset-0 rounded-full bg-brand-secondary opacity-5 animate-pulse" />
-             <div className="absolute -inset-4 border border-brand-secondary/10 rounded-full animate-[spin_15s_linear_infinite]" />
-             <div className="absolute -inset-8 border border-white/5 rounded-full animate-[spin_20s_linear_infinite_reverse]" />
+          <div className="relative z-20 w-32 h-32 md:w-56 md:h-56 rounded-full bg-black border-4 border-brand-secondary/40 flex items-center justify-center shadow-[0_0_40px_hsla(var(--brand-secondary)/0.15)] group hover:border-brand-secondary transition-all duration-700 lg:absolute">
+             <div className="absolute -inset-4 border border-brand-secondary/5 rounded-full" />
+             <div className="absolute -inset-8 border border-white/5 rounded-full" />
              
              <div className="text-center p-4">
                <div className="w-12 h-12 mx-auto mb-2 text-brand-secondary opacity-50">
@@ -53,10 +52,10 @@ export default function Services() {
 
           {/* Connection Lines (SVGs - Hidden on mobile) */}
           <div className="absolute inset-0 pointer-events-none hidden lg:block">
-             <svg className="w-full h-full opacity-20" viewBox="0 0 1000 1000">
-                <line x1="500" y1="500" x2="500" y2="150" stroke="hsl(var(--brand-primary))" strokeWidth="1" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
-                <line x1="500" y1="500" x2="150" y2="750" stroke="hsl(var(--brand-primary))" strokeWidth="1" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
-                <line x1="500" y1="500" x2="850" y2="750" stroke="hsl(var(--brand-secondary))" strokeWidth="1" strokeDasharray="10 10" className="animate-[dash_20s_linear_infinite]" />
+             <svg className="w-full h-full opacity-10" viewBox="0 0 1000 1000">
+                <line x1="500" y1="500" x2="500" y2="150" stroke="hsl(var(--brand-primary))" strokeWidth="1" strokeDasharray="10 10" />
+                <line x1="500" y1="500" x2="150" y2="750" stroke="hsl(var(--brand-primary))" strokeWidth="1" strokeDasharray="10 10" />
+                <line x1="500" y1="500" x2="850" y2="750" stroke="hsl(var(--brand-secondary))" strokeWidth="1" strokeDasharray="10 10" />
              </svg>
           </div>
 
@@ -86,7 +85,7 @@ export default function Services() {
               >
                 {/* ID & Status */}
                 <div className="flex justify-between items-center mb-6">
-                  <div className={`w-2 h-2 rounded-full animate-pulse ${isPopular ? "bg-brand-primary" : isEcosystem ? "bg-brand-secondary" : "bg-white/30"}`} />
+                  <div className={`w-2 h-2 rounded-full ${isPopular ? "bg-brand-primary" : isEcosystem ? "bg-brand-secondary" : "bg-white/30"}`} />
                   <span className="text-[10px] font-mono opacity-20 tracking-widest">MODULE_0{service.id}</span>
                 </div>
 

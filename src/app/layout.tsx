@@ -4,10 +4,6 @@ import "./globals.css";
 import { CartProvider } from "../context/CartContext";
 import { LanguageProvider } from "../context/LanguageContext";
 import { ThemeProvider } from "../context/ThemeContext";
-import Preloader from "../components/Preloader";
-import CustomCursor from "../components/CustomCursor";
-import TechFloaters from "../components/TechFloaters";
-import ProjectileFX from "../components/ProjectileFX";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -38,11 +34,6 @@ export default function RootLayout({
         {/* Design Layers */}
         <div className="fixed inset-0 pointer-events-none z-[0] motherboard-grid opacity-10"></div>
         <div className="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] mix-blend-overlay noise-bg"></div>
-
-        <CustomCursor />
-        <TechFloaters />
-        <Preloader />
-        <ProjectileFX />
 
         <ThemeProvider>
           <LanguageProvider>

@@ -8,7 +8,7 @@ export const translations = {
     },
     hero: {
       title1: "Landing Pages & Branding",
-      title2: "Domine seu território digital",
+      title2: "Domine território digital",
       subtitle: "",
       btnPlans: "Ver Planos",
       btnContact: "Fale Conosco",
@@ -112,7 +112,7 @@ export const translations = {
     },
     hero: {
       title1: "Landing Pages & Branding",
-      title2: "Domine su territorio digital",
+      title2: "Domine territorio digital",
       subtitle: "",
       btnPlans: "Ver Planes",
       btnContact: "Contáctanos",
@@ -163,7 +163,7 @@ export const translations = {
           id: 2,
           title: "Identidad Pro",
           price: 500,
-          description: "Landing page x 3 com branding básico.",
+          description: "Landing page x 3 con branding básico.",
           features: [
             "Diseño Responsivo",
             "Page Store Simple Connect carrito de compras",
@@ -180,9 +180,9 @@ export const translations = {
           features: [
             "Primer Backend",
             "Auth (Google + Email)",
-            "Design Responsivo",
+            "Diseño Responsivo",
             "Deploy",
-            "Asesoria de dominio y integraciones de pago: Stripe, PayPal, Mercado Pago o PagSeguro",
+            "Asesoría de dominio e integraciones de pago: Stripe, PayPal, Mercado Pago o PagSeguro",
           ],
         },
       ],
@@ -193,7 +193,7 @@ export const translations = {
       totalBg: "Total",
       checkout: "Comprar por WA",
       whatsappHeader:
-        "Bienvenido a Grull Picture Web!%0A%0ASabemos que estas interesado en:%0A%0A",
+        "¡Bienvenido a Grull Picture Web!%0A%0ASabemos que estás interesado en:%0A%0A",
       whatsappTotal:
         "%0A%0AEn breve te respondemos en cuanto procesamos el pedido.%0ATotal: %s",
     },
@@ -205,7 +205,7 @@ export const translations = {
       terms: "Términos",
       privacy: "Privacidad",
     },
-    spaceship: "Hola soy Grull",
+    spaceship: "Hola, soy Grull",
   },
   en: {
     navbar: {
