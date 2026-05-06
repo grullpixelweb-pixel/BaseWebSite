@@ -51,8 +51,7 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Design Responsivo",
-            "Deploy",
+            "Design Responsivo + Deploy",
           ],
         },
         {
@@ -160,8 +159,7 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Diseño Responsivo",
-            "Deploy",
+            "Diseño Responsivo + Deploy",
           ],
         },
         {
@@ -269,8 +267,7 @@ export const translations = {
           price: 250,
           description: "Landing page - one page",
           features: [
-            "Responsive Design",
-            "Deploy",
+            "Responsive Design + Deploy",
           ],
         },
         {

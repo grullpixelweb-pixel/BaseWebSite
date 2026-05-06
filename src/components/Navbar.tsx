@@ -48,14 +48,14 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group relative z-50">
           <span className="text-black dark:text-white font-display font-black tracking-tighter uppercase text-xl md:text-3xl">
-            GRULL<span className="text-brand-secondary">PIXEL</span>
+            GRULL<span className="text-brand-secondary">PICTURE</span>WEB
           </span>
         </a>
 
         {/* Action icons + Menu Toggle */}
         <div className="flex items-center gap-4">
           <div className="flex items-center gap-2 md:gap-4 relative z-50">
-            <button 
+            <button
               className="px-3 md:px-6 py-2 bg-brand-primary text-black font-black uppercase text-[10px] md:text-xs border-2 border-black shadow-[4px_4px_0px_black] hover:translate-x-[2px] hover:translate-y-[2px] hover:shadow-none transition-all"
               onClick={() => document.getElementById("cart-sidebar")?.classList.toggle("translate-x-full")}
             >
@@ -80,7 +80,7 @@ export default function Navbar() {
         <div className="flex flex-col lg:flex-row min-h-full">
           {/* Left Side: Navigation */}
           <div className="w-full lg:w-[60%] h-auto lg:h-screen bg-black p-8 lg:p-32 flex flex-col justify-between relative overflow-hidden border-b lg:border-b-0 lg:border-r border-brand-primary/10">
-          <div className="absolute inset-0 motherboard-grid opacity-10"></div>
+            <div className="absolute inset-0 motherboard-grid opacity-10"></div>
 
             <div className="relative z-10 pt-24 lg:pt-0 lg:h-full lg:flex lg:flex-col lg:justify-center space-y-6 lg:space-y-8">
               {navLinks.map((link) => (
@@ -88,9 +88,9 @@ export default function Navbar() {
                   key={link.href}
                   href={link.href}
                   onClick={() => setIsOpen(false)}
-                  className="group flex items-baseline gap-4 lg:gap-8 text-3xl md:text-5xl lg:text-7xl font-display font-black hover:translate-x-4 transition-all duration-700 text-white/20 hover:text-white"
+                  className="group flex items-baseline gap-4 lg:gap-8 text-3xl md:text-5xl lg:text-7xl font-display font-black hover:translate-x-4 transition-all duration-700 text-white hover:text-brand-primary"
                 >
-                  <span className="text-[10px] lg:text-xs font-sans font-black tracking-[0.4em] text-brand-primary/40 group-hover:text-brand-primary transition-colors">{link.num}/</span>
+                  <span className="text-[10px] lg:text-xs font-sans font-black tracking-[0.4em] text-white group-hover:text-brand-primary transition-colors">{link.num}</span>
                   <span className="relative">
                     {link.label}
                     <span className="absolute -bottom-1 left-0 w-0 h-1 bg-brand-primary group-hover:w-full transition-all duration-700 delay-100" />
@@ -99,27 +99,27 @@ export default function Navbar() {
               ))}
             </div>
 
-          <div className="relative z-10 flex items-center gap-6 py-8 border-t border-white/5 lg:border-t-0">
-            {(["pt", "es", "en"] as Language[]).map((l) => (
-              <button
-                key={l}
-                onClick={() => handleLangChange(l)}
-                className={`text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 hover-jump ${lang === l ? "text-brand-primary" : "text-white/20 hover:text-white"
-                  }`}
-              >
-                {l.toUpperCase()}
-              </button>
-            ))}
+            <div className="relative z-10 flex items-center gap-6 py-8 border-t border-white/5 lg:border-t-0">
+              {(["pt", "es", "en"] as Language[]).map((l) => (
+                <button
+                  key={l}
+                  onClick={() => handleLangChange(l)}
+                  className={`text-[10px] lg:text-xs font-black uppercase tracking-[0.2em] transition-all duration-300 hover-jump ${lang === l ? "text-brand-primary" : "text-white hover:text-brand-primary"
+                    }`}
+                >
+                  {l.toUpperCase()}
+                </button>
+              ))}
+            </div>
           </div>
-        </div>
 
           {/* Right Side: Contact / CTA */}
           <div className="w-full lg:w-[40%] h-auto lg:h-screen bg-[#050505] p-12 lg:p-24 flex flex-col justify-center items-center text-center relative overflow-hidden">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,hsla(var(--brand-primary)/0.05),transparent_70%)]"></div>
-            
+
             {/* Decorative core element for menu */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-brand-primary/5 rounded-full blur-[100px] animate-pulse"></div>
-  
+
             <div className="relative z-10 w-full max-w-sm">
               <div className="mb-12">
                 <div className="inline-block px-4 py-1.5 border border-brand-primary/20 text-[10px] uppercase font-black tracking-[0.4em] text-brand-primary mb-6">
@@ -128,7 +128,7 @@ export default function Navbar() {
                 <h4 className="text-white font-display font-bold text-2xl mb-2 italic animate-reveal-up">{t.menu.title}</h4>
                 <p className="text-white/40 text-xs font-medium uppercase tracking-widest">{t.menu.subtitle}</p>
               </div>
-  
+
               <div className="flex flex-col items-center gap-12">
                 <a
                   href="https://wa.me/5511981718899"
@@ -141,7 +141,7 @@ export default function Navbar() {
                     </svg>
                   </div>
                 </a>
-  
+
                 <div className="flex gap-12 group pb-12 lg:pb-0">
                   <a href="https://www.instagram.com/grullpixel/" target="_blank" rel="noopener noreferrer" className="text-white/20 hover:text-brand-primary hover:scale-125 transition-all duration-500 hover-jump">
                     <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -153,7 +153,7 @@ export default function Navbar() {
                 </div>
               </div>
             </div>
-  
+
             <div className="absolute bottom-12 right-12 opacity-20 hidden lg:block">
               <div className="text-[9px] font-mono text-brand-primary text-right tracking-tighter">
                 GRULL_PICTURE_WEB_v2.0<br />

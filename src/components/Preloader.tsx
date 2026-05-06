@@ -30,7 +30,7 @@ export default function Preloader() {
       <div className="relative flex flex-col items-center max-w-full px-4 text-center">
         <div className="bg-black p-6 sm:p-8 md:p-12 neo-border shadow-[12px_12px_0px_white] transform -rotate-2 w-full">
             <h1 className="text-3xl sm:text-6xl md:text-[8rem] font-display font-black tracking-tighter uppercase text-white leading-none break-words">
-                GRULL<span className="text-brand-secondary">PIXEL</span>
+                GRULL<span className="text-brand-secondary">PICTURE</span>WEB
             </h1>
         </div>
         

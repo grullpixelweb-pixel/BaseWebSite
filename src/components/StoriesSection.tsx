@@ -5,7 +5,7 @@ import { MessageSquareText, ArrowRight } from "lucide-react";
 
 const stories = [
   {
-    category: "PROJECT GRULL PIXEL IS A CREATIVE STUDIO",
+    category: "PROJECT GRULL PICTURE WEB IS A CREATIVE STUDIO",
     title: "WE BUILD DIGITAL DREAMS",
     color: "#39FF14", // Neon Green
     accent: "#FF0080", // Pink
@@ -99,7 +99,7 @@ export default function StoriesSection() {
 
               {/* Decorative Pills from Image */}
               <div className="absolute top-[-20%] left-[-10%] w-[40%] h-[150%] bg-white/10 rotate-45 pointer-events-none" />
-              <div className="absolute top-[20%] right-[-5%] w-[10%] h-[60%] bg-black/10 rounded-full rotate-[-20deg] pointer-events-none" />
+              <div className="absolute top-[20%] right-[-10%] w-[20%] h-[40%] bg-black/10 rotate-45 pointer-events-none" />
               
 
               {/* Content Overlay */}

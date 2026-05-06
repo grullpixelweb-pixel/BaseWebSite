@@ -99,11 +99,10 @@ export default function Cart() {
         <button
           onClick={handleCheckout}
           disabled={cart.length === 0}
-          className={`w-full py-6 flex items-center justify-center gap-3 font-black text-xl uppercase tracking-tighter transition-all neo-border neo-shadow-brand active:translate-y-1 active:translate-x-1 active:shadow-none ${
-            cart.length === 0
+          className={`w-full py-6 flex items-center justify-center gap-3 font-black text-xl uppercase tracking-tighter transition-all neo-border neo-shadow-brand active:translate-y-1 active:translate-x-1 active:shadow-none ${cart.length === 0
               ? "bg-zinc-100 text-zinc-300 border-zinc-200 cursor-not-allowed"
               : "bg-black text-white"
-          }`}
+            }`}
         >
           <Send className="w-6 h-6" strokeWidth={3} />
           {t.cart.checkout}
